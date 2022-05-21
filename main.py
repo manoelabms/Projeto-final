@@ -9,7 +9,7 @@ window = pygame.display.set_mode((WIDTH, HEIGHT))
 game = True
 
 # ----- Inicia assets
-image = pygame.image.load('tela_inicio_pygame.jpeg').convert()
+image = pygame.image.load('Tela_inicial.png').convert()
 image = pygame.transform.scale(image, (960, 720)) #acertar a escala certa da imagem de mudar a width e height se necessario
 
 # ===== Loop principal =====
@@ -29,3 +29,4 @@ while game:
 
 # ===== Finalização =====
 pygame.quit()  # Função do PyGame que finaliza os recursos utilizados
+
