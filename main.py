@@ -19,7 +19,6 @@ while game:
         # ----- Verifica consequências
         if event.type == pygame.QUIT:
             game = False
-
     # ----- Gera saídas
     window.fill((0, 0, 0))  # Preenche com a cor branca
     window.blit(image, (0, 0))
