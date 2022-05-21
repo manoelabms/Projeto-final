@@ -10,7 +10,7 @@ game = True
 
 # ----- Inicia assets
 image = pygame.image.load('tela_inicio_pygame.jpeg').convert()
-image = pygame.transform.scale(image, (960, 720)) #acertar a escala certa da imagem de mudar a width e height se necessario
+image = pygame.transform.scale(image, (960, 720))
 
 # ===== Loop principal =====
 while game:
