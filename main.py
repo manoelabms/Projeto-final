@@ -43,6 +43,8 @@ game_imagem = pygame.image.load('Imagem_jogo.jpg').convert_alpha()
 game_imagem = pygame.transform.scale(game_imagem, (960, 720))
 goleiro_imagem = pygame.image.load('Goleiro_.png').convert_alpha()
 goleiro_imagem = pygame.transform.scale(goleiro_imagem, (GOLEIRO_WIDTH, GOLEIRO_HEIGHT))
+times_imagem = pygame.image.load('Escolha_dos_times.jpg').convert_alpha()
+times_imagem = pygame.transform.scale(times_imagem, (960, 720))
 
 
 clock = pygame.time.Clock()
@@ -51,6 +53,7 @@ FPS = 30
 # ===== Loop principal =====
 INICIAL = 1
 QUIT = 0
+TIMES = 3
 GAME = 2
 status = INICIAL
 bola = None
@@ -68,7 +71,7 @@ while status != QUIT:
                 status = QUIT
             # ----- Verifica consequências
             if event.type == pygame.MOUSEBUTTONDOWN:
-                status = GAME
+                status = TIMES
 
         # ----- Gera saídas
         window.fill((0, 0, 0))  # Preenche com a cor branca
@@ -112,6 +115,23 @@ while status != QUIT:
 
         # ----- Atualiza estado do jogo
         pygame.display.update()  # Mostra o novo frame para o jogador
+
+    while status == TIMES:
+        clock.tick(FPS)
+
+        for event in pygame.event.get():
+            # ----- Verifica consequências
+            if event.type == pygame.QUIT:
+                status = QUIT
+
+        window.fill((255, 255, 255))  # Preenche com a cor branca
+        window.blit(game_imagem, (0, 0))
+
+        all_sprites.draw(window)
+
+        # ----- Atualiza estado do jogo
+        pygame.display.update()
+
 
 
 # ===== Finalização =====
