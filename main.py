@@ -1,5 +1,6 @@
 from tkinter import Y
 import pygame
+pygame.init()
 
 class Bola(pygame.sprite.Sprite):
     def __init__(self, img, x, y):
@@ -8,18 +9,27 @@ class Bola(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.centerx = x
         self.rect.bottom = y
-        self.speedx = 10
-    
+        self.speedx = 1
+
     def update(self):
         self.rect.centerx += self.speedx
-        self.rect.centery += 2
+        self.rect.centery += -2
 
-pygame.init()
+class Goleiro(pygame.sprite.Sprite):
+    def __init__(self, img, x, y):
+        pygame.sprite.Sprite.__init__(self)
+        self.image = img
+        self.rect = self.image.get_rect()
+        self.rect.centerx = x
+        self.rect.bottom = y
+        self.speedx = 0
 
 WIDTH = 960
 HEIGHT = 720
 BOLA_WIDTH = 80
 BOLA_HEIGHT = 80
+GOLEIRO_WIDTH = 160
+GOLEIRO_HEIGHT = 210
 window = pygame.display.set_mode((WIDTH, HEIGHT))
 
 game = True
@@ -29,14 +39,12 @@ image = pygame.image.load('Tela_inicial.png').convert()
 image = pygame.transform.scale(image, (960, 720)) #acertar a escala certa da imagem de mudar a width e height se necessario
 bola_imagem = pygame.image.load('Bola_de_futebol.png').convert_alpha()
 bola_imagem = pygame.transform.scale(bola_imagem, (BOLA_WIDTH, BOLA_HEIGHT))
+game_imagem = pygame.image.load('Imagem_jogo.jpg').convert_alpha()
+game_imagem = pygame.transform.scale(game_imagem, (960, 720))
+goleiro_imagem = pygame.image.load('Goleiro_.png').convert_alpha()
+goleiro_imagem = pygame.transform.scale(goleiro_imagem, (GOLEIRO_WIDTH, GOLEIRO_HEIGHT))
 
 
-
-#bola_x = 200
-# y negativo significa que está acima do topo da janela. O meteoro começa fora da janela
-#bola_y = -BOLA_HEIGHT
-#bola_speedx = 3
-#bola_speedy = 4
 clock = pygame.time.Clock()
 FPS = 30
 
@@ -46,7 +54,9 @@ QUIT = 0
 GAME = 2
 status = INICIAL
 bola = None
+goleiro = None
 all_sprites = pygame.sprite.Group()
+
 while status != QUIT:
     # ----- Trata eventos
     while status == INICIAL:
@@ -76,9 +86,13 @@ while status != QUIT:
                 status = QUIT
 
         if bola == None:
-            bola = Bola(bola_imagem, 50, 30)
+            bola = Bola(bola_imagem, 480,720)
             all_sprites.add(bola)
 
+        if goleiro == None:
+            goleiro = Goleiro(goleiro_imagem, 480, 560)
+            all_sprites.add(goleiro)
+        
         all_sprites.update()
 
         # ----- Atualiza estado do jogo
@@ -92,7 +106,7 @@ while status != QUIT:
 
         # ----- Gera saídas
         window.fill((255, 255, 255))  # Preenche com a cor branca
-        # window.blit(image, (0, 0))
+        window.blit(game_imagem, (0, 0))
 
         all_sprites.draw(window)
 
