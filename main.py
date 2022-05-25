@@ -1,4 +1,3 @@
-from tkinter import Y
 import pygame
 from config import *
 from game import tela_game
@@ -9,14 +8,15 @@ pygame.init()
 
 window = pygame.display.set_mode((WIDTH, HEIGHT))
 
+time = 'brasil'
 status = INICIAL
 while status != QUIT:
     if status == INICIAL:
         status = tela_inicial(window)
     if status == TIMES:
-        status = tela_times(window)
+        status, time = tela_times(window)
     if status == GAME:
-        status = tela_game(window)
+        status = tela_game(window, time)
     
 # ===== Finalização =====
 pygame.quit()  # Função do PyGame que finaliza os recursos utilizados

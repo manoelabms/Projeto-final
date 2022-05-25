@@ -13,7 +13,7 @@ def load_assets():
     a = {}
     # ----- Inicia assets
     a[INICIAL_BACKGROUND] = pygame.image.load('Tela_inicial.png').convert()
-    a[INICIAL_BACKGROUND] = pygame.transform.scale(a[INICIAL_BACKGROUND], (960, 720)) #acertar a escala certa da imagem de mudar a width e height se necessario
+    a[INICIAL_BACKGROUND] = pygame.transform.scale(a[INICIAL_BACKGROUND], (960, 720))
     a[BOLA_IMAGE] = pygame.image.load('Bola_de_futebol.png').convert_alpha()
     a[BOLA_IMAGE] = pygame.transform.scale(a[BOLA_IMAGE], (BOLA_WIDTH, BOLA_HEIGHT))
     a[GAME_BACKGROUND] = pygame.image.load('Imagem_jogo.jpg').convert_alpha()
@@ -25,6 +25,6 @@ def load_assets():
     a[CHUTEIRA_IMAGE] = pygame.image.load('chuteira.png').convert_alpha()
     a[CHUTEIRA_IMAGE] = pygame.transform.scale( a[CHUTEIRA_IMAGE], (CHUTEIRA_WIDTH, CHUTEIRA_HEIGHT))
     a[GOL_IMAGE] = pygame.image.load('gol.png').convert_alpha()
-    a[GOL_IMAGE] = pygame.transform.scale(a[GOL_IMAGE], (700, 500))
+    a[GOL_IMAGE] = pygame.transform.scale(a[GOL_IMAGE], (680, 720))
 
     return a

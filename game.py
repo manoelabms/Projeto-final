@@ -3,15 +3,19 @@ from config import *
 from assets import *
 from sprites import *
 
-def tela_game(window):
+def tela_game(window, time):
     clock = pygame.time.Clock()
     assets = load_assets()
 
-    bola = None
-    goleiro = None
-    chuteira = None
+    bola = Bola(assets[BOLA_IMAGE], 480, 720)
+    goleiro = Goleiro(assets[GOLEIRO_IMAGE], 480, 560)
+    chuteira = Chuteira(assets[CHUTEIRA_IMAGE], 400, 560)
+    gol = Gol(assets[GOL_IMAGE], 480, 800)
     all_sprites = pygame.sprite.Group()
-    gol = None
+    all_sprites.add(gol)
+    all_sprites.add(goleiro)
+    all_sprites.add(chuteira)
+    all_sprites.add(bola)
     status = GAME
     while status == GAME:
         clock.tick(FPS)
@@ -20,21 +24,10 @@ def tela_game(window):
             # ----- Verifica consequências
             if event.type == pygame.QUIT:
                 status = QUIT
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                pos_x, pos_y = pygame.mouse.get_pos()
+                bola.shoot(pos_x, pos_y)
 
-        if bola == None:
-            bola = Bola(assets[BOLA_IMAGE], 480, 720)
-            all_sprites.add(bola)
-
-        if goleiro == None:
-            goleiro = Goleiro(assets[GOLEIRO_IMAGE], 480, 560)
-            all_sprites.add(goleiro)
-
-        if chuteira == None:
-            chuteira = Chuteira(assets[CHUTEIRA_IMAGE], 400, 560)
-            all_sprites.add(chuteira)
-        
-        if gol == None:
-            gol = Gol(assets[GOL_IMAGE,480,360])
         all_sprites.update()
 
         # ----- Gera saidas
