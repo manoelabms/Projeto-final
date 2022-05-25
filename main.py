@@ -5,6 +5,7 @@ pygame.init()
 class Bola(pygame.sprite.Sprite):
     def __init__(self, img, x, y):
         pygame.sprite.Sprite.__init__(self)
+
         self.image = img
         self.rect = self.image.get_rect()
         self.rect.centerx = x
@@ -12,8 +13,14 @@ class Bola(pygame.sprite.Sprite):
         self.speedx = 1
 
     def update(self):
+
         self.rect.centerx += self.speedx
         self.rect.centery += -2
+
+        if self.rect.right < WIDTH:
+            self.rect.right = 480
+        if self.rect.left > HEIGHT:
+            self.rect.left = 720
 
 class Goleiro(pygame.sprite.Sprite):
     def __init__(self, img, x, y):
@@ -80,6 +87,22 @@ while status != QUIT:
         # ----- Atualiza estado do jogo
         pygame.display.update()  # Mostra o novo frame para o jogador
 
+    while status == TIMES:
+        clock.tick(FPS)
+
+        for event in pygame.event.get():
+            # ----- Verifica consequências
+            if event.type == pygame.QUIT:
+                status = QUIT
+
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                status = GAME
+        window.fill((255, 255, 255))  # Preenche com a cor branca
+        window.blit(times_imagem, (0, 0))
+
+        # ----- Atualiza estado do jogo
+        pygame.display.update()
+
     while status == GAME:
         clock.tick(FPS)
 
@@ -116,21 +139,7 @@ while status != QUIT:
         # ----- Atualiza estado do jogo
         pygame.display.update()  # Mostra o novo frame para o jogador
 
-    while status == TIMES:
-        clock.tick(FPS)
-
-        for event in pygame.event.get():
-            # ----- Verifica consequências
-            if event.type == pygame.QUIT:
-                status = QUIT
-
-        window.fill((255, 255, 255))  # Preenche com a cor branca
-        window.blit(game_imagem, (0, 0))
-
-        all_sprites.draw(window)
-
-        # ----- Atualiza estado do jogo
-        pygame.display.update()
+    
 
 
 
