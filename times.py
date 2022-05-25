@@ -22,6 +22,9 @@ def tela_times(window):
                 status = GAME
         window.fill((255, 255, 255))  # Preenche com a cor branca
         window.blit(assets[TIME_BACKGROUND], (0, 0))
+        cor = (255, 0, 0)
+        vertices = (540, 455, 338, 100)
+        pygame.draw.rect(window, cor, vertices)
 
         # ----- Atualiza estado do jogo
         pygame.display.update()

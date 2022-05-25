@@ -22,7 +22,7 @@ def load_assets():
     a[GOLEIRO_IMAGE] = pygame.transform.scale(a[GOLEIRO_IMAGE], (GOLEIRO_WIDTH, GOLEIRO_HEIGHT))
     a[TIME_BACKGROUND] = pygame.image.load('Escolha_dos_times.jpg').convert_alpha()
     a[TIME_BACKGROUND] = pygame.transform.scale(a[TIME_BACKGROUND], (960, 720))
-    a[CHUTEIRA_IMAGE] = pygame.image.load('chuteira.png').convert_alpha()
+    a[CHUTEIRA_IMAGE] = pygame.image.load('soccer_boot.png').convert_alpha()
     a[CHUTEIRA_IMAGE] = pygame.transform.scale( a[CHUTEIRA_IMAGE], (CHUTEIRA_WIDTH, CHUTEIRA_HEIGHT))
     a[GOL_IMAGE] = pygame.image.load('gol.png').convert_alpha()
     a[GOL_IMAGE] = pygame.transform.scale(a[GOL_IMAGE], (680, 720))
