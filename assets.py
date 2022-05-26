@@ -8,6 +8,7 @@ GAME_BACKGROUND = 'game.background'
 GOLEIRO_IMAGE = 'goleiro.image'
 CHUTEIRA_IMAGE = 'chuteira.image'
 GOL_IMAGE = 'gol.image'
+TEXTO = 'selecionepais.txt'
 
 def load_assets():
     a = {}
@@ -26,5 +27,6 @@ def load_assets():
     a[CHUTEIRA_IMAGE] = pygame.transform.scale( a[CHUTEIRA_IMAGE], (CHUTEIRA_WIDTH, CHUTEIRA_HEIGHT))
     a[GOL_IMAGE] = pygame.image.load('gol.png').convert_alpha()
     a[GOL_IMAGE] = pygame.transform.scale(a[GOL_IMAGE], (680, 720))
-
+    a[TEXTO] = pygame.font.SysFont(None, 48)
+    a[TEXTO] = a[TEXTO].render('Selecione um país para jogar', True, (255, 0, 0))
     return a

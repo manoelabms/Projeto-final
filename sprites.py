@@ -50,19 +50,19 @@ class Goleiro(pygame.sprite.Sprite):
         self.image = img
         self.rect = self.image.get_rect()
         
-        self.rect.x = random.randint(480, GOLEIRO_WIDTH)
-        self.rect.y = random.randint(480, GOLEIRO_HEIGHT)
-        self.speedx = random.randint(-3, 3)
-        self.speedy = random.randint(2, 9)
-    def update(self):
-        self.rect.x += self.speedx
-        self.rect.y += self.speedy
+        #self.rect.x = random.randint(480, GOLEIRO_WIDTH)
+        #self.rect.y = random.randint(480, GOLEIRO_HEIGHT)
+        #self.speedx = random.randint(-3, 3)
+        #self.speedy = random.randint(2, 9)
+    #def update(self):
+        #self.rect.x += self.speedx
+        #self.rect.y += self.speedy
 
-        if self.rect.top > 0 or self.rect.right < 480 or self.rect.left > 800:
-            self.rect.x = random.randint(0, GOLEIRO_WIDTH)
-            self.rect.y = random.randint(-100, GOLEIRO_HEIGHT)
-            self.speedx = random.randint(-3, 3)
-            self.speedy = random.randint(2, 9)
+        #if self.rect.top > 0 or self.rect.right < 480 or self.rect.left > 800:
+            #self.rect.x = random.randint(0, GOLEIRO_WIDTH)
+            #self.rect.y = random.randint(-100, GOLEIRO_HEIGHT)
+            #self.speedx = random.randint(-3, 3)
+            #self.speedy = random.randint(2, 9)
 
 
 class Gol(pygame.sprite.Sprite):
