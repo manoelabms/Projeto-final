@@ -49,7 +49,13 @@ class Goleiro(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.image = img
         self.rect = self.image.get_rect()
-        
+        self.rect.centerx = x
+        self.rect.bottom = y
+        self.ini_x = x
+        self.ini_y = y
+        self.d_x = 0
+        self.d_y = 0
+        self.speedx = 0
         #self.rect.x = random.randint(480, GOLEIRO_WIDTH)
         #self.rect.y = random.randint(480, GOLEIRO_HEIGHT)
         #self.speedx = random.randint(-3, 3)

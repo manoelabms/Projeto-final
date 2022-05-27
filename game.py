@@ -7,14 +7,10 @@ def tela_game(window, time):
     clock = pygame.time.Clock()
     assets = load_assets()
 
-    bola = Bola(assets[BOLA_IMAGE], 480, 720)
-    goleiro = Goleiro(assets[GOLEIRO_IMAGE], 480, 560)
-    chuteira = Chuteira(assets[CHUTEIRA_IMAGE], 400, 560)
-    gol = Gol(assets[GOL_IMAGE], 480, 800)
+    bola = Bola(assets[BOLA_IMAGE], 480, 620)
+    goleiro = Goleiro(assets[GOLEIRO_IMAGE], 480, 452)
     all_sprites = pygame.sprite.Group()
-    all_sprites.add(gol)
     all_sprites.add(goleiro)
-    all_sprites.add(chuteira)
     all_sprites.add(bola)
     status = GAME
     while status == GAME:
@@ -35,7 +31,9 @@ def tela_game(window, time):
         window.blit(assets[GAME_BACKGROUND], (0, 0))
 
         all_sprites.draw(window)
-
+        cor = (255, 0, 0)
+        coord_gol = (250, 185, 445, 250)
+        pygame.draw.polygon(window, cor, [(250,210),(695,210),(695,440),(250,440)])
         # ----- Atualiza estado do jogo
         pygame.display.update()  # Mostra o novo frame para o jogador
 
