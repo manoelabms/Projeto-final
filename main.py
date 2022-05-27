@@ -8,7 +8,7 @@ pygame.init()
 
 window = pygame.display.set_mode((WIDTH, HEIGHT))
 
-time = 'brasil'
+time = ''
 status = INICIAL
 while status != QUIT:
     if status == INICIAL:

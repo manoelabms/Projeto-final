@@ -34,9 +34,12 @@ class Bola(pygame.sprite.Sprite):
                 self.rect.centerx += self.d_x
                 self.rect.centery += self.d_y
                 self.profundidade -= 2
+                if self.rect.top > HEIGHT or self.rect.right < 0 or self.rect.left > WIDTH:
+                    self.rect.centerx = 480
+                    self.rect.bottom = 0
             else:
                 self.profundidade = 0
-
+        
     def shoot(self, tx, ty):
         print(tx, ty)
         if not self.chutou:
@@ -56,11 +59,25 @@ class Goleiro(pygame.sprite.Sprite):
         self.d_x = 0
         self.d_y = 0
         self.speedx = 0
+        self.profundidade = 300
+        self.chutou = False
+        # pygame.draw.polygon(window, cor, [(265,260),(685,260),(695,440),(250,440)])
         #self.rect.x = random.randint(480, GOLEIRO_WIDTH)
         #self.rect.y = random.randint(480, GOLEIRO_HEIGHT)
         #self.speedx = random.randint(-3, 3)
         #self.speedy = random.randint(2, 9)
-    #def update(self):
+
+    def update(self):
+        if self.chutou:
+            if self.profundidade > 0:
+                self.rect.width -= 2
+                self.rect.height -= 2
+                self.rect.centerx += self.d_x
+                self.rect.centery += self.d_y
+                self.profundidade -= 1
+            else:
+                self.profundidade = 0
+
         #self.rect.x += self.speedx
         #self.rect.y += self.speedy
 
@@ -69,14 +86,9 @@ class Goleiro(pygame.sprite.Sprite):
             #self.rect.y = random.randint(-100, GOLEIRO_HEIGHT)
             #self.speedx = random.randint(-3, 3)
             #self.speedy = random.randint(2, 9)
-
-
-class Gol(pygame.sprite.Sprite):
-    def __init__(self, img, x, y):
-        pygame.sprite.Sprite.__init__(self)
-
-        self.image = img
-        self.rect = self.image.get_rect()
-        self.rect.centerx = x
-        self.rect.bottom = y
-        self.speedx = 0
+    def shoot(self, tx, ty):
+        print(tx, ty)
+        if not self.chutou:
+            self.d_x = (tx - self.ini_x) // 100
+            self.d_y = (ty - self.ini_y) // 100
+            self.chutou = True

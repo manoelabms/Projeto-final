@@ -6,7 +6,6 @@ from sprites import *
 def tela_game(window, time):
     clock = pygame.time.Clock()
     assets = load_assets()
-
     bola = Bola(assets[BOLA_IMAGE], 480, 620)
     goleiro = Goleiro(assets[GOLEIRO_IMAGE], 480, 452)
     all_sprites = pygame.sprite.Group()
@@ -23,6 +22,7 @@ def tela_game(window, time):
             if event.type == pygame.MOUSEBUTTONDOWN:
                 pos_x, pos_y = pygame.mouse.get_pos()
                 bola.shoot(pos_x, pos_y)
+                goleiro.shoot(pos_x, pos_y)
 
         all_sprites.update()
 
@@ -32,8 +32,7 @@ def tela_game(window, time):
 
         all_sprites.draw(window)
         cor = (255, 0, 0)
-        coord_gol = (250, 185, 445, 250)
-        pygame.draw.polygon(window, cor, [(250,210),(695,210),(695,440),(250,440)])
+        # pygame.draw.polygon(window, cor, [(265,260),(685,260),(695,440),(250,440)])
         # ----- Atualiza estado do jogo
         pygame.display.update()  # Mostra o novo frame para o jogador
 

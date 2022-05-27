@@ -9,6 +9,10 @@ GOLEIRO_IMAGE = 'goleiro.image'
 CHUTEIRA_IMAGE = 'chuteira.image'
 GOL_IMAGE = 'gol.image'
 TEXTO = 'selecionepais.txt'
+ALEMANHA_IMAGE = 'iconealemanha.image'
+BRASIL_IMAGE = 'iconebrasil.image'
+FRANCA_IMAGE = 'iconefranca.image'
+ARGENTINA_IMAGE = 'iconeargentina.image'
 
 def load_assets():
     a = {}
@@ -29,4 +33,18 @@ def load_assets():
     a[GOL_IMAGE] = pygame.transform.scale(a[GOL_IMAGE], (680, 720))
     a[TEXTO] = pygame.font.SysFont(None, 48)
     a[TEXTO] = a[TEXTO].render('Selecione um país para jogar', True, (255, 0, 0))
+
+    a[ALEMANHA_IMAGE] = pygame.image.load('gol.png').convert_alpha()
+    a[ALEMANHA_IMAGE] = pygame.transform.scale(a[GOL_IMAGE], (680, 720))
+
+    a[BRASIL_IMAGE] = pygame.image.load('gol.png').convert_alpha()
+    a[BRASIL_IMAGE] = pygame.transform.scale(a[GOL_IMAGE], (680, 720))
+
+    a[FRANCA_IMAGE] = pygame.image.load('gol.png').convert_alpha()
+    a[FRANCA_IMAGE] = pygame.transform.scale(a[GOL_IMAGE], (680, 720))
+
+    a[ARGENTINA_IMAGE] = pygame.image.load('gol.png').convert_alpha()
+    a[ARGENTINA_IMAGE] = pygame.transform.scale(a[GOL_IMAGE], (680, 720))
     return a
+
+

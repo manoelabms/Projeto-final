@@ -6,8 +6,8 @@ def tela_times(window):
     clock = pygame.time.Clock()
     assets = load_assets()
     status = TIMES
-    time = 'brasil' #inicializando um time
-    time_rival = 'alemanha' #inicializando um time rival
+    time = '' #inicializando um time
+    time_rival = '' #inicializando um time rival
 
     while status == TIMES:
         clock.tick(FPS)
@@ -17,20 +17,19 @@ def tela_times(window):
             if event.type == pygame.QUIT:
                 status = QUIT
 
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                pos_x, pos_y = pygame.mouse.get_pos()
-                if pos_x > 540 and pos_x < 878 and pos_y > 457 and pos_y < 557:
-                    time = 'alemanha'
-                elif pos_x > 80 and pos_x < 418 and pos_y > 457 and pos_y < 557:
-                    time = 'argentina'
-                elif pos_x > 80 and pos_x < 353 and pos_y > 230 and pos_y < 330:
-                    time = 'brasil'
-                elif pos_x > 540 and pos_x < 815 and pos_y > 235 and pos_y < 340:
-                    time = 'frança'
-                else: 
-                    window.blit(assets[TEXTO], (50, 50))
-                    
-                status = GAME
+            if event.type == pygame.MOUSEBUTTONDOWN:        
+                    pos_x, pos_y = pygame.mouse.get_pos()
+                    if pos_x > 540 and pos_x < 878 and pos_y > 457 and pos_y < 557:
+                        time = 'alemanha'
+                    elif pos_x > 80 and pos_x < 418 and pos_y > 457 and pos_y < 557:
+                        time = 'argentina'
+                    elif pos_x > 80 and pos_x < 353 and pos_y > 230 and pos_y < 330:
+                        time = 'brasil'
+                    elif pos_x > 540 and pos_x < 815 and pos_y > 235 and pos_y < 340:
+                        time = 'frança'
+                    else: 
+                        window.blit(assets[TEXTO], (50, 50))  #nao funciona  
+                    status = GAME
         window.fill((255, 255, 255)) 
         window.blit(assets[TIME_BACKGROUND], (0, 0))
 
