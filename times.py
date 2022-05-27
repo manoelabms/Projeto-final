@@ -32,9 +32,13 @@ def tela_times(window):
                     status = GAME
         window.fill((255, 255, 255)) 
         window.blit(assets[TIME_BACKGROUND], (0, 0))
-
+        cor = (255, 0, 0)
+        pygame.draw.polygon(window, cor, [(540, 457), (540, 557), (878, 457), (878, 557)])
+        pygame.draw.polygon(window, cor, [(80, 230), (80, 330), (353, 230), (353, 330)])
+        pygame.draw.polygon(window, cor, [(540, 235), (540, 340), (815, 235), (815, 340)])
+        pygame.draw.polygon(window, cor, [(80, 457), (80, 557), (418, 457), (418, 557)])
         #testando retangulos
-        #cor = (255, 0, 0)
+
         #vertices_alemanha = (540, 457, 338, 100)
         #pygame.draw.rect(window, cor, vertices_alemanha)
         #vertices_argentina = (80, 457, 338, 100)

@@ -29,7 +29,14 @@ def tela_game(window, time):
         # ----- Gera saidas
         window.fill((255, 255, 255))  # Preenche com a cor branca
         window.blit(assets[GAME_BACKGROUND], (0, 0))
-
+        if time == 'brasil':
+            window.blit(assets[BRASIL_IMAGE], (50, 50)) 
+        elif time == 'franca':
+            window.blit(assets[FRANCA_IMAGE], (50, 50)) 
+        elif time == 'alemanha':
+            window.blit(assets[ALEMANHA_IMAGE], (50, 50)) 
+        elif time == 'argentina':
+            window.blit(assets[ARGENTINA_IMAGE], (50, 50)) 
         all_sprites.draw(window)
         cor = (255, 0, 0)
         # pygame.draw.polygon(window, cor, [(265,260),(685,260),(695,440),(250,440)])

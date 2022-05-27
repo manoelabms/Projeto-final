@@ -34,17 +34,17 @@ def load_assets():
     a[TEXTO] = pygame.font.SysFont(None, 48)
     a[TEXTO] = a[TEXTO].render('Selecione um país para jogar', True, (255, 0, 0))
 
-    a[ALEMANHA_IMAGE] = pygame.image.load('gol.png').convert_alpha()
-    a[ALEMANHA_IMAGE] = pygame.transform.scale(a[GOL_IMAGE], (680, 720))
+    a[ALEMANHA_IMAGE] = pygame.image.load('alemanha.png').convert_alpha()
+    a[ALEMANHA_IMAGE] = pygame.transform.scale(a[ALEMANHA_IMAGE], (680, 720))
 
-    a[BRASIL_IMAGE] = pygame.image.load('gol.png').convert_alpha()
-    a[BRASIL_IMAGE] = pygame.transform.scale(a[GOL_IMAGE], (680, 720))
+    a[BRASIL_IMAGE] = pygame.image.load('brasil.png').convert_alpha()
+    a[BRASIL_IMAGE] = pygame.transform.scale(a[BRASIL_IMAGE], (680, 720))
 
-    a[FRANCA_IMAGE] = pygame.image.load('gol.png').convert_alpha()
-    a[FRANCA_IMAGE] = pygame.transform.scale(a[GOL_IMAGE], (680, 720))
+    a[FRANCA_IMAGE] = pygame.image.load('franca.png').convert_alpha()
+    a[FRANCA_IMAGE] = pygame.transform.scale(a[FRANCA_IMAGE], (680, 720))
 
-    a[ARGENTINA_IMAGE] = pygame.image.load('gol.png').convert_alpha()
-    a[ARGENTINA_IMAGE] = pygame.transform.scale(a[GOL_IMAGE], (680, 720))
+    a[ARGENTINA_IMAGE] = pygame.image.load('argentina.png').convert_alpha()
+    a[ARGENTINA_IMAGE] = pygame.transform.scale(a[ARGENTINA_IMAGE], (680, 720))
     return a
 
 
