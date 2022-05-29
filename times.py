@@ -50,3 +50,4 @@ def tela_times(window):
         # ----- Atualiza estado do jogo
         pygame.display.update()
     return status, time, time_rival
+
