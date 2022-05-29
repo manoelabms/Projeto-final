@@ -48,9 +48,9 @@ def load_assets():
     a[ARGENTINA_IMAGE] = pygame.image.load('argentina.png').convert_alpha()
     a[ARGENTINA_IMAGE] = pygame.transform.scale(a[ARGENTINA_IMAGE], (50, 50))
 
-    a[TELA_AVISO_CHUTE] = pygame.image.load('chutar.jpg').convert_alpha()
+    a[TELA_AVISO_CHUTE] = pygame.image.load('Imagem_chutar_aviso.png').convert_alpha()
     a[TELA_AVISO_CHUTE] = pygame.transform.scale(a[TELA_AVISO_CHUTE], (960, 720))
-    a[TELA_AVISO_DEFESA] = pygame.image.load('defender.jpg').convert_alpha()
+    a[TELA_AVISO_DEFESA] = pygame.image.load('Imagem_defender_aviso.png').convert_alpha()
     a[TELA_AVISO_DEFESA] = pygame.transform.scale(a[TELA_AVISO_DEFESA], (960, 720))
     return a
 
