@@ -97,11 +97,11 @@ class Goleiro(pygame.sprite.Sprite):
         self.d_y = 0
         self.speedx = 0
         self.profundidade = 300
-        self.chutou = False
+        self.defense = False
         # pygame.draw.polygon(window, cor, [(265,260),(685,260),(695,440),(250,440)])
 
     def update(self):
-        if self.chutou:
+        if self.defense:
             if self.profundidade > 0:
                 self.rect.width -= 2
                 self.rect.height -= 2
@@ -113,9 +113,9 @@ class Goleiro(pygame.sprite.Sprite):
 
     def defense (self):
         if not self.defense:
-            self.d_x = random.randint(250,700)
-            self.d_y = random.randint(260,440) 
-            self.chutou = True
+            self.d_x = random.randint(250, 695)
+            self.d_y = random.randint(260, 440) 
+            self.defense = True
 
 class Goleiro_gk(pygame.sprite.Sprite):
     def __init__(self, img, x, y):

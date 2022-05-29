@@ -8,7 +8,7 @@ from times import *
 def tela_game(window, time, time_rival):
     clock = pygame.time.Clock()
     assets = load_assets()
-    bola = Bola_gk(assets[BOLA_IMAGE], 480, 620)
+    bola = Bola(assets[BOLA_IMAGE], 480, 620)
     goleiro = Goleiro(assets[GOLEIRO_IMAGE], 480, 452)
     all_sprites = pygame.sprite.Group()
     all_sprites.add(goleiro)
@@ -24,7 +24,7 @@ def tela_game(window, time, time_rival):
             if event.type == pygame.MOUSEBUTTONDOWN:
                 pos_x, pos_y = pygame.mouse.get_pos()
                 bola.shoot(pos_x, pos_y)
-                goleiro.defense(pos_x, pos_y)
+                goleiro.defense()
 
         all_sprites.update()
 
