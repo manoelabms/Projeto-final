@@ -1,7 +1,9 @@
 import pygame
+import random
 from config import *
 from assets import *
 from sprites import *
+from times import *
 
 def tela_game(window, time):
     clock = pygame.time.Clock()
@@ -30,13 +32,23 @@ def tela_game(window, time):
         window.fill((255, 255, 255))  # Preenche com a cor branca
         window.blit(assets[GAME_BACKGROUND], (0, 0))
         if time == 'brasil':
-            window.blit(assets[BRASIL_IMAGE], (50, 50)) 
+            window.blit(assets[BRASIL_IMAGE], (40, 40))
         elif time == 'franca':
-            window.blit(assets[FRANCA_IMAGE], (50, 50)) 
+            window.blit(assets[FRANCA_IMAGE], (40, 40)) 
         elif time == 'alemanha':
-            window.blit(assets[ALEMANHA_IMAGE], (50, 50)) 
+            window.blit(assets[ALEMANHA_IMAGE], (40, 40)) 
         elif time == 'argentina':
-            window.blit(assets[ARGENTINA_IMAGE], (50, 50)) 
+            window.blit(assets[ARGENTINA_IMAGE], (40, 40)) 
+
+        if time_rival == 'brasil':
+            window.blit(assets[BRASIL_IMAGE], (900, 40))
+        elif time_rival == 'franca':
+            window.blit(assets[FRANCA_IMAGE], (900, 40)) 
+        elif time_rival == 'alemanha':
+            window.blit(assets[ALEMANHA_IMAGE], (900, 40)) 
+        elif time_rival == 'argentina':
+            window.blit(assets[ARGENTINA_IMAGE], (900, 40)) 
+
         all_sprites.draw(window)
         cor = (255, 0, 0)
         # pygame.draw.polygon(window, cor, [(265,260),(685,260),(695,440),(250,440)])
