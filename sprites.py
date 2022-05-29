@@ -34,9 +34,9 @@ class Bola(pygame.sprite.Sprite):
                 self.rect.centerx += self.d_x
                 self.rect.centery += self.d_y
                 self.profundidade -= 2
-                if self.rect.top > HEIGHT or self.rect.right < 0 or self.rect.left > WIDTH:
-                    self.rect.centerx = 480
-                    self.rect.bottom = 0
+                #if self.rect.top > HEIGHT or self.rect.right < 0 or self.rect.left > WIDTH:
+                    #self.rect.centerx = 480
+                    #self.rect.bottom = 0
             else:
                 self.profundidade = 0
         
@@ -111,8 +111,7 @@ class Goleiro(pygame.sprite.Sprite):
             else:
                 self.profundidade = 0
 
-    def defense (self, tx, ty):
-        print(tx, ty)
+    def defense (self):
         if not self.defense:
             self.d_x = random.randint(250,700)
             self.d_y = random.randint(260,440) 

@@ -51,6 +51,7 @@ def tela_game(window, time, time_rival):
 
         all_sprites.draw(window)
         cor = (255, 0, 0)
+        
         # pygame.draw.polygon(window, cor, [(265,260),(685,260),(695,440),(250,440)])
         # ----- Atualiza estado do jogo
         pygame.display.update()  # Mostra o novo frame para o jogador
