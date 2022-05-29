@@ -33,7 +33,8 @@ def tela_times(window):
                     time_rival = random.choice(lista_times)
                     while time_rival == time:
                         time_rival = random.choice(lista_times)
-                    status = GAME
+                        
+                    status = AVISO_CHUTE
         window.fill((255, 255, 255)) 
         window.blit(assets[TIME_BACKGROUND], (0, 0))
     

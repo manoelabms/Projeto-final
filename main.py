@@ -1,4 +1,6 @@
 import pygame
+from aviso_chute import tela_aviso_chute
+from aviso_defesa import tela_aviso_defesa
 from config import *
 from game import tela_game
 from game_gk import tela_game_gk
@@ -20,6 +22,10 @@ while status != QUIT:
         status = tela_game(window, time, time_rival)
     if status == GAME_GK:
         status = tela_game_gk(window, time, time_rival) 
+    if status == AVISO_CHUTE:
+        status = tela_aviso_chute(window)
+    if status == AVISO_DEFESA:
+        status = tela_aviso_defesa(window)
 
 pygame.quit()  
 
