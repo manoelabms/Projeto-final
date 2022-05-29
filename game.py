@@ -5,7 +5,7 @@ from assets import *
 from sprites import *
 from times import *
 
-def tela_game(window, time):
+def tela_game(window, time, time_rival):
     clock = pygame.time.Clock()
     assets = load_assets()
     bola = Bola(assets[BOLA_IMAGE], 480, 620)
