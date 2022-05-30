@@ -48,10 +48,10 @@ def tela_game(window, time, time_rival):
             window.blit(assets[ALEMANHA_IMAGE], (900, 40)) 
         elif time_rival == 'argentina':
             window.blit(assets[ARGENTINA_IMAGE], (900, 40)) 
+        
 
         all_sprites.draw(window)
         cor = (255, 0, 0)
-
 
         
         # pygame.draw.polygon(window, cor, [(265,260),(685,260),(695,440),(250,440)])

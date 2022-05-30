@@ -2,6 +2,7 @@ import pygame
 from config import *
 import random
 
+
 class Chuteira(pygame.sprite.Sprite):
     def __init__(self, img, x, y):
         pygame.sprite.Sprite.__init__(self)
@@ -116,10 +117,16 @@ class Goleiro(pygame.sprite.Sprite):
         self.speedx = 0
         self.profundidade = 300
         self.defesa = False
-        # pygame.draw.polygon(window, cor, [(265,260),(685,260),(695,440),(250,440)])
+        self.ty = 0
+        self.tx = 0
+        self.hitbox = (self.rect.centerx, self.rect.bottom, 140, 160)
+        
+
+# The elements in the hitbox are (top left x, top left y, width, height)
+        #pygame.draw.polygon(window, cor, [(265,260),(685,260),(695,440),(250,440)])
 
     def update(self):
-        if self.defesa:
+        if self.defesa and self.ty < self.rect.bottom:
             if self.profundidade > 0:
                 self.rect.width -= 2
                 self.rect.height -= 2
@@ -131,9 +138,12 @@ class Goleiro(pygame.sprite.Sprite):
 
     def defense(self):
         if not self.defesa:
-            self.d_x = random.randint(250, 695)
-            self.d_y = random.randint(260, 440) 
-            
+            tx = random.randint(250, 695)
+            ty = random.randint(260, 440) 
+            self.d_x = (tx - self.ini_x) // 100
+            self.d_y = (ty - self.ini_y) // 100
+            self.ty = ty
+            self.tx = tx
             self.defesa = True
 
 class Goleiro_gk(pygame.sprite.Sprite):
