@@ -37,8 +37,8 @@ class Bola(pygame.sprite.Sprite):
 
                 center = self.rect.center
                 # TODO: rescalar a imagem
-
-                self.image = self.explosion_anim[self.frame]
+                self.image = pygame.transform.scale(self.image,(0.5*self.profundidade, 0.5*self.profundidade))
+                #self.image = self.explosion_anim[self.frame]
 
 
                 self.rect = self.image.get_rect()
