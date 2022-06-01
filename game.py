@@ -16,7 +16,9 @@ def tela_game(window, time, time_rival):
     status = GAME
     while status == GAME:
         clock.tick(FPS)
-
+        #rcolisao= pygame.sprite.spritecollide(bola,assets[GOLEIRO_IMAGE],False,pygame.sprite.collide_mask)
+        #if colisao>0:
+        #   window.blit(bola, 480, 620)
         for event in pygame.event.get():
             # ----- Verifica consequências
             if event.type == pygame.QUIT:
@@ -41,13 +43,13 @@ def tela_game(window, time, time_rival):
             window.blit(assets[ARGENTINA_IMAGE], (40, 40)) 
 
         if time_rival == 'brasil':
-            window.blit(assets[BRASIL_IMAGE], (900, 40))
+            window.blit(assets[BRASIL_IMAGE], (870, 40))
         elif time_rival == 'franca':
-            window.blit(assets[FRANCA_IMAGE], (900, 40)) 
+            window.blit(assets[FRANCA_IMAGE], (870, 40)) 
         elif time_rival == 'alemanha':
-            window.blit(assets[ALEMANHA_IMAGE], (900, 40)) 
+            window.blit(assets[ALEMANHA_IMAGE], (870, 40)) 
         elif time_rival == 'argentina':
-            window.blit(assets[ARGENTINA_IMAGE], (900, 40)) 
+            window.blit(assets[ARGENTINA_IMAGE], (870, 40)) 
         
 
         all_sprites.draw(window)

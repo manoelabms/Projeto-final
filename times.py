@@ -27,7 +27,7 @@ def tela_times(window):
                     elif pos_x > 80 and pos_x < 353 and pos_y > 230 and pos_y < 330:
                         time = 'brasil'
                     elif pos_x > 540 and pos_x < 815 and pos_y > 235 and pos_y < 340:
-                        time = 'frança'
+                        time = 'franca'
                     else: 
                         window.blit(assets[TEXTO], (50, 50))  #nao funciona  
                     time_rival = random.choice(lista_times)
