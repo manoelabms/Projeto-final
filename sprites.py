@@ -153,6 +153,8 @@ class Goleiro(pygame.sprite.Sprite):
             self.tx = tx
             self.defesa = True
 
+
+
 class Goleiro_gk(pygame.sprite.Sprite):
     def __init__(self, img, x, y):
         pygame.sprite.Sprite.__init__(self)

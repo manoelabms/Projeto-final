@@ -14,6 +14,7 @@ def tela_game(window, time, time_rival):
     all_sprites.add(goleiro)
     all_sprites.add(bola)
     status = GAME
+    #ok = False
     while status == GAME:
         clock.tick(FPS)
         #rcolisao= pygame.sprite.spritecollide(bola,assets[GOLEIRO_IMAGE],False,pygame.sprite.collide_mask)
@@ -27,6 +28,9 @@ def tela_game(window, time, time_rival):
                 pos_x, pos_y = pygame.mouse.get_pos()
                 bola.shoot(pos_x, pos_y)
                 goleiro.defense(pos_x, pos_y)
+                ok = True
+            #if ok:
+                #status = AVISO_DEFESA
 
         all_sprites.update()
 
@@ -51,6 +55,7 @@ def tela_game(window, time, time_rival):
         elif time_rival == 'argentina':
             window.blit(assets[ARGENTINA_IMAGE], (870, 40)) 
         
+
 
         all_sprites.draw(window)
         cor = (255, 0, 0)

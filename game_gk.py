@@ -24,7 +24,7 @@ def tela_game_gk(window, time, time_rival):
             if event.type == pygame.MOUSEBUTTONDOWN:
                 pos_x, pos_y = pygame.mouse.get_pos()
                 bola.shoot(pos_x, pos_y)
-                goleiro.shoot(pos_x, pos_y)
+                goleiro.defense(pos_x, pos_y)
 
         all_sprites.update()
 
