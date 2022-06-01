@@ -10,6 +10,8 @@ def tela_game(window, time, time_rival):
     assets = load_assets()
     bola = Bola(assets[BOLA_IMAGE], 480, 620)
     goleiro = Goleiro(assets[GOLEIRO_IMAGE], 480, 452)
+    all_goleiros = pygame.sprite.Group()
+    all_goleiros.add(goleiro)
     all_sprites = pygame.sprite.Group()
     all_sprites.add(goleiro)
     all_sprites.add(bola)
@@ -33,6 +35,12 @@ def tela_game(window, time, time_rival):
                 #status = AVISO_DEFESA
 
         all_sprites.update()
+
+        hits = pygame.sprite.spritecollide(bola, all_goleiros, False, pygame.sprite.collide_mask)
+        if bola.profundidade == 0 and len(hits) > 0:
+            print('pegou')
+        elif bola.profundidade == 0:
+            print('verificar se esta no gol')
 
         # ----- Gera saidas
         window.fill((255, 255, 255))  # Preenche com a cor branca

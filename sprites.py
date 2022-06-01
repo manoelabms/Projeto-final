@@ -19,57 +19,43 @@ class Bola(pygame.sprite.Sprite):
         self.image_original = img
         self.image = img
         self.rect = self.image.get_rect()
-        self.rect.centerx = x
-        self.rect.bottom = y
-        self.ini_x = x
-        self.ini_y = y
+        self.rect.center = (x, y)
+        self.profundidade = 1
+        self.chutou = False
         self.d_x = 0
         self.d_y = 0
-        self.speedx = 1
-        self.profundidade = 150
-        self.chutou = False
         self.tx = 0
         self.ty = 0
-        self.d_b = (self.rect.width - 50) / 100
+        self.d_b = 0
+        self.w = self.image.get_rect().width
+        self.h = self.image.get_rect().height
       
-
     def update(self):
-        parada = False
-        if self.chutou and self.ty < self.rect.centery:
-            if self.profundidade > 0:
+        if self.chutou and self.profundidade > 0:
+            self.rect.centerx += int(self.d_x)
+            self.rect.centery += int(self.d_y)
 
-                self.rect.centerx += int(self.d_x)
-                self.rect.centery += int(self.d_y)
-                w = self.image.get_rect().width * .99
-                if w > 50:
-                    center = self.rect.center
-                    # TODO: rescalar a imagem
-                    print(self.image.get_width(), self.image.get_height())
-                    w = self.image.get_rect().width - self.d_b
-                    h = self.image.get_rect().height - self.d_b
-                    self.image = pygame.transform.scale(self.image_original,(w, h))
-                    #self.image = self.explosion_anim[self.frame]
-
-                    self.rect = self.image.get_rect()
-                    self.rect.center = center
-                self.profundidade -= 1
-                
-                #if self.rect.top > HEIGHT or self.rect.right < 0 or self.rect.left > WIDTH:
-                    #self.rect.centerx = 480
-                    #self.rect.bottom = 0
-            else:
-                self.profundidade = 0
-        elif self.rect.centery < self.ty: 
-            parada = True
-        return parada
+            center = self.rect.center
+            # TODO: rescalar a imagem
+            self.w -= self.d_b
+            self.h -= self.d_b
+            self.image = pygame.transform.scale(self.image_original, (self.w, self.h))
+            self.rect = self.image.get_rect()
+            self.rect.center = center
+            self.profundidade -= 1
+            print(self.d_x, self.d_y, self.d_b, self.w, self.h, self.profundidade)
         
-    def shoot(self, tx, ty):
+    def shoot(self, tx, ty, p = PROFUNDIDADE):
         print(tx, ty)
         if not self.chutou:
+            self.profundidade = p
             self.tx = tx
             self.ty = ty
-            self.d_x = (tx - self.rect.centerx) / 100
-            self.d_y = (ty - self.rect.centery) / 100
+            self.d_x = (tx - self.rect.centerx) / self.profundidade
+            self.d_y = (ty - self.rect.centery) / self.profundidade
+            self.d_b = (self.rect.width - 50) / self.profundidade
+            self.w = self.image.get_rect().width
+            self.h = self.image.get_rect().height
             self.chutou = True
 
 class Bola_gk(pygame.sprite.Sprite):
