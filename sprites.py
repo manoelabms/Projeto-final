@@ -16,6 +16,7 @@ class Chuteira(pygame.sprite.Sprite):
 class Bola(pygame.sprite.Sprite):
     def __init__(self, img, x, y):
         pygame.sprite.Sprite.__init__(self)
+        self.image_original = img
         self.image = img
         self.rect = self.image.get_rect()
         self.rect.centerx = x
@@ -25,10 +26,11 @@ class Bola(pygame.sprite.Sprite):
         self.d_x = 0
         self.d_y = 0
         self.speedx = 1
-        self.profundidade = 300
+        self.profundidade = 150
         self.chutou = False
         self.tx = 0
         self.ty = 0
+        self.d_b = (self.rect.width - 50) / 100
       
 
     def update(self):
@@ -36,17 +38,21 @@ class Bola(pygame.sprite.Sprite):
         if self.chutou and self.ty < self.rect.centery:
             if self.profundidade > 0:
 
-                center = self.rect.center
-                # TODO: rescalar a imagem
-                self.image = pygame.transform.scale(self.image,(0.5*self.profundidade, 0.5*self.profundidade))
-                #self.image = self.explosion_anim[self.frame]
+                self.rect.centerx += int(self.d_x)
+                self.rect.centery += int(self.d_y)
+                w = self.image.get_rect().width * .99
+                if w > 50:
+                    center = self.rect.center
+                    # TODO: rescalar a imagem
+                    print(self.image.get_width(), self.image.get_height())
+                    w = self.image.get_rect().width - self.d_b
+                    h = self.image.get_rect().height - self.d_b
+                    self.image = pygame.transform.scale(self.image_original,(w, h))
+                    #self.image = self.explosion_anim[self.frame]
 
-
-                self.rect = self.image.get_rect()
-                self.rect.center = center
-                self.rect.centerx += self.d_x
-                self.rect.centery += self.d_y
-                self.profundidade -= 2
+                    self.rect = self.image.get_rect()
+                    self.rect.center = center
+                self.profundidade -= 1
                 
                 #if self.rect.top > HEIGHT or self.rect.right < 0 or self.rect.left > WIDTH:
                     #self.rect.centerx = 480
@@ -62,8 +68,8 @@ class Bola(pygame.sprite.Sprite):
         if not self.chutou:
             self.tx = tx
             self.ty = ty
-            self.d_x = (tx - self.ini_x) // 100
-            self.d_y = (ty - self.ini_y) // 100
+            self.d_x = (tx - self.rect.centerx) / 100
+            self.d_y = (ty - self.rect.centery) / 100
             self.chutou = True
 
 class Bola_gk(pygame.sprite.Sprite):
@@ -136,10 +142,11 @@ class Goleiro(pygame.sprite.Sprite):
             else:
                 self.profundidade = 0
 
-    def defense(self):
+    def defense(self, tx, ty):
         if not self.defesa:
-            tx = random.randint(250, 695)
-            ty = random.randint(260, 440) 
+            if random.randint(2, 3) == 3:
+                tx = random.randint(250, 695)
+                ty = random.randint(260, 440) 
             self.d_x = (tx - self.ini_x) // 100
             self.d_y = (ty - self.ini_y) // 100
             self.ty = ty

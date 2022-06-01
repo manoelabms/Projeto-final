@@ -12,6 +12,7 @@ pygame.init()
 window = pygame.display.set_mode((WIDTH, HEIGHT))
 
 time = ''
+time_rival = ''
 status = INICIAL
 while status != QUIT:
     if status == INICIAL:
