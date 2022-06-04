@@ -5,7 +5,7 @@ from assets import *
 from sprites import *
 from times import *
 
-def tela_game_gk(window, time, time_rival):
+def tela_game_gk(window, time_casa, time_rival):
     clock = pygame.time.Clock()
     assets = load_assets()
     bola = Bola_gk(assets[BOLA_IMAGE], 480, 620)
@@ -31,13 +31,13 @@ def tela_game_gk(window, time, time_rival):
         # ----- Gera saidas
         window.fill((255, 255, 255))  # Preenche com a cor branca
         window.blit(assets[GAME_BACKGROUND], (0, 0))
-        if time == 'brasil':
+        if time_casa == 'brasil':
             window.blit(assets[BRASIL_IMAGE], (40, 40))
-        elif time == 'franca':
+        elif time_casa == 'franca':
             window.blit(assets[FRANCA_IMAGE], (40, 40)) 
-        elif time == 'alemanha':
+        elif time_casa == 'alemanha':
             window.blit(assets[ALEMANHA_IMAGE], (40, 40)) 
-        elif time == 'argentina':
+        elif time_casa == 'argentina':
             window.blit(assets[ARGENTINA_IMAGE], (40, 40)) 
 
         if time_rival == 'brasil':

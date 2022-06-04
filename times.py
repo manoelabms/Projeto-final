@@ -7,7 +7,7 @@ def tela_times(window):
     clock = pygame.time.Clock()
     assets = load_assets()
     status = TIMES
-    time = '' #inicializando um time
+    time_casa = '' #inicializando um time
     time_rival = '' #inicializando um time rival
 
     while status == TIMES:
@@ -21,17 +21,17 @@ def tela_times(window):
             if event.type == pygame.MOUSEBUTTONDOWN:        
                     pos_x, pos_y = pygame.mouse.get_pos()
                     if pos_x > 540 and pos_x < 878 and pos_y > 457 and pos_y < 557:
-                        time = 'alemanha'
+                        time_casa = 'alemanha'
                     elif pos_x > 80 and pos_x < 418 and pos_y > 457 and pos_y < 557:
-                        time = 'argentina'
+                        time_casa = 'argentina'
                     elif pos_x > 80 and pos_x < 353 and pos_y > 230 and pos_y < 330:
-                        time = 'brasil'
+                        time_casa = 'brasil'
                     elif pos_x > 540 and pos_x < 815 and pos_y > 235 and pos_y < 340:
-                        time = 'franca'
+                        time_casa = 'franca'
                     else: 
                         window.blit(assets[TEXTO], (50, 50))  #nao funciona  
                     time_rival = random.choice(lista_times)
-                    while time_rival == time:
+                    while time_rival == time_casa:
                         time_rival = random.choice(lista_times)
                         
                     status = AVISO_CHUTE
@@ -50,5 +50,5 @@ def tela_times(window):
 
         # ----- Atualiza estado do jogo
         pygame.display.update()
-    return status, time, time_rival
+    return status, time_casa, time_rival
 

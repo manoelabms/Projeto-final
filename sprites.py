@@ -43,7 +43,7 @@ class Bola(pygame.sprite.Sprite):
             self.rect = self.image.get_rect()
             self.rect.center = center
             self.profundidade -= 1
-            print(self.d_x, self.d_y, self.d_b, self.w, self.h, self.profundidade)
+            #print(self.d_x, self.d_y, self.d_b, self.w, self.h, self.profundidade)
         
     def shoot(self, tx, ty, p = PROFUNDIDADE):
         print(tx, ty)
@@ -130,7 +130,8 @@ class Goleiro(pygame.sprite.Sprite):
 
     def defense(self, tx, ty):
         if not self.defesa:
-            if random.randint(2, 3) == 3:
+            aleatorio = random.randint(1, 5)
+            if aleatorio != 2:
                 tx = random.randint(250, 695)
                 ty = random.randint(260, 440) 
             self.d_x = (tx - self.ini_x) // 100
