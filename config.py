@@ -19,3 +19,5 @@ AVISO_CHUTE = 4
 AVISO_DEFESA = 5
 
 PROFUNDIDADE = 90
+placar_casa = 0
+placar_fora = 0
