@@ -17,26 +17,23 @@ def tela_game(window, time_casa, time_rival):
     all_sprites.add(goleiro)
     all_sprites.add(bola)
     status = GAME
-    #ok = False
+
     while status == GAME:
         clock.tick(FPS)
-        #rcolisao= pygame.sprite.spritecollide(bola,assets[GOLEIRO_IMAGE],False,pygame.sprite.collide_mask)
-        #if colisao>0:
-        #   window.blit(bola, 480, 620)
         for event in pygame.event.get():
             # ----- Verifica consequências
             if event.type == pygame.QUIT:
                 status = QUIT
             if event.type == pygame.MOUSEBUTTONDOWN:
+                pygame.time.set_timer(pygame.USEREVENT+1, 10000)
                 pos_x, pos_y = pygame.mouse.get_pos()
                 bola.shoot(pos_x, pos_y)
                 goleiro.defense(pos_x, pos_y)
-                ok = True
-            #if ok:
-                #status = AVISO_DEFESA
-
+            if event.type == pygame.USEREVENT+1: 
+                pygame.time.set_timer(pygame.USEREVENT+1, 0) 
+                status = AVISO_DEFESA
         all_sprites.update()
-
+        
         hits = pygame.sprite.spritecollide(bola, all_goleiros, False, pygame.sprite.collide_mask)
         if bola.profundidade == 0 and len(hits) > 0:
             print('pegou')
@@ -46,7 +43,6 @@ def tela_game(window, time_casa, time_rival):
             #[(265,260),(685,260),(695,440),(250,440)])
         else:
             print('n gol')
-
         # ----- Gera saidas
         window.fill((255, 255, 255))  # Preenche com a cor branca
         window.blit(assets[GAME_BACKGROUND], (0, 0))
@@ -68,12 +64,10 @@ def tela_game(window, time_casa, time_rival):
         elif time_rival == 'argentina':
             window.blit(assets[ARGENTINA_IMAGE], (870, 40)) 
         
-
-
+        
         all_sprites.draw(window)
         cor = (255, 0, 0)
-        #time.sleep(10)
-        #status = AVISO_DEFESA
+
 
         
         # pygame.draw.polygon(window, cor, [(265,260),(685,260),(695,440),(250,440)])
