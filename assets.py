@@ -52,9 +52,13 @@ def load_assets():
     a[TELA_AVISO_CHUTE] = pygame.transform.scale(a[TELA_AVISO_CHUTE], (960, 720))
     a[TELA_AVISO_DEFESA] = pygame.image.load('Imagem_defender_aviso.png').convert_alpha()
     a[TELA_AVISO_DEFESA] = pygame.transform.scale(a[TELA_AVISO_DEFESA], (960, 720))
-    
+
     a[FIM_BACKGROUND] = pygame.image.load('Imagem_final_de_jogo.png').convert_alpha()
     a[FIM_BACKGROUND] = pygame.transform.scale(a[FIM_BACKGROUND], (960, 720))
+
+    pygame.mixer.music.load(os.path.join(SND_DIR, 'tgfcoder-FrozenJam-SeamlessLoop.ogg'))
+    pygame.mixer.music.set_volume(0.4)
+    assets[] = pygame.mixer.Sound(os.path.join(SND_DIR, 'expl3.wav'))
     return a
 
 
