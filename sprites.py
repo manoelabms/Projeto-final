@@ -104,11 +104,6 @@ class Bola_gk(pygame.sprite.Sprite):
             self.tx = tx 
             self.chutou = True
 
-
-
-
-
-
 class Goleiro(pygame.sprite.Sprite):
     def __init__(self, img, x, y):
         pygame.sprite.Sprite.__init__(self)
@@ -126,10 +121,6 @@ class Goleiro(pygame.sprite.Sprite):
         self.ty = 0
         self.tx = 0
         self.hitbox = (self.rect.centerx, self.rect.bottom, 140, 160)
-        
-
-# The elements in the hitbox are (top left x, top left y, width, height)
-        #pygame.draw.polygon(window, cor, [(265,260),(685,260),(695,440),(250,440)])
 
     def update(self):
         if self.defesa and self.ty < self.rect.bottom:
@@ -164,7 +155,7 @@ class Goleiro_gk(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.center = (x, y)
         self.profundidade = 1
-        self.chutou = False
+        self.defesa = False
         self.d_x = 0
         self.d_y = 0
         self.tx = 0
@@ -176,48 +167,17 @@ class Goleiro_gk(pygame.sprite.Sprite):
         
 
     def update(self):
-        if self.chutou:
-            if self.profundidade > 0:
-                self.rect.width -= 2
-                self.rect.height -= 2
-                self.rect.centerx += self.d_x
-                self.rect.centery += self.d_y
-                self.profundidade -= 1
-            else:
-                self.profundidade = 0
-
-    def defense (self, tx, ty):
-        print(tx, ty)
-        if not self.defense:
-            self.d_x = (tx - self.ini_x) // 100
-            self.d_y = (ty - self.ini_y) // 100
-            self.chutou = True
-----------------------------------------------------------------------------
-
-    def update(self):
-        if self.chutou and self.profundidade > 0:
+        if self.defesa and self.profundidade > 0:
             self.rect.centerx += int(self.d_x)
             self.rect.centery += int(self.d_y)
-
-            center = self.rect.center
-            # TODO: rescalar a imagem
-            self.w -= self.d_b
-            self.h -= self.d_b
-            self.image = pygame.transform.scale(self.image_original, (self.w, self.h))
-            self.rect = self.image.get_rect()
-            self.rect.center = center
             self.profundidade -= 1
-            #print(self.d_x, self.d_y, self.d_b, self.w, self.h, self.profundidade)
-        
-    def shoot(self, tx, ty, p = PROFUNDIDADE):
-        print(tx, ty)
-        if not self.chutou:
+
+    def defense (self, tx, ty, p = PROFUNDIDADE):
+        if not self.defesa:
             self.profundidade = p
             self.tx = tx
             self.ty = ty
             self.d_x = (tx - self.rect.centerx) / self.profundidade
             self.d_y = (ty - self.rect.centery) / self.profundidade
             self.d_b = (self.rect.width - 50) / self.profundidade
-            self.w = self.image.get_rect().width
-            self.h = self.image.get_rect().height
-            self.chutou = True
+            self.defesa = True

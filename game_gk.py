@@ -9,7 +9,7 @@ def tela_game_gk(window, time_casa, time_rival):
     clock = pygame.time.Clock()
     assets = load_assets()
     bola = Bola_gk(assets[BOLA_IMAGE], 480, 620)
-    goleiro = Goleiro_gk(assets[GOLEIRO_IMAGE], 480, 452)
+    goleiro = Goleiro_gk(assets[GOLEIRO_IMAGE], 480, 370)
     all_sprites = pygame.sprite.Group()
     all_sprites.add(goleiro)
     all_sprites.add(bola)
