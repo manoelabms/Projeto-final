@@ -15,6 +15,7 @@ FRANCA_IMAGE = 'iconefranca.image'
 ARGENTINA_IMAGE = 'iconeargentina.image'
 TELA_AVISO_CHUTE = 'avisochute.image'
 TELA_AVISO_DEFESA = 'avisodefesa.image'
+FIM_BACKGROUND = 'telafinal.background'
 
 def load_assets():
     a = {}
@@ -51,6 +52,9 @@ def load_assets():
     a[TELA_AVISO_CHUTE] = pygame.transform.scale(a[TELA_AVISO_CHUTE], (960, 720))
     a[TELA_AVISO_DEFESA] = pygame.image.load('Imagem_defender_aviso.png').convert_alpha()
     a[TELA_AVISO_DEFESA] = pygame.transform.scale(a[TELA_AVISO_DEFESA], (960, 720))
+    
+    a[FIM_BACKGROUND] = pygame.image.load('Imagem_final_de_jogo.png').convert_alpha()
+    a[FIM_BACKGROUND] = pygame.transform.scale(a[FIM_BACKGROUND], (960, 720))
     return a
 
 

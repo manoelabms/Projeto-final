@@ -5,6 +5,7 @@ from config import *
 from game import tela_game
 from game_gk import tela_game_gk
 from inicial import tela_inicial
+from tela_final import game_over
 from times import tela_times
 
 pygame.init()
@@ -14,6 +15,7 @@ window = pygame.display.set_mode((WIDTH, HEIGHT))
 time_casa = ''
 time_rival = ''
 status = INICIAL
+rodadas = 0
 while status != QUIT:
     if status == INICIAL:
         status = tela_inicial(window)
@@ -27,6 +29,10 @@ while status != QUIT:
         status = tela_aviso_chute(window)
     if status == AVISO_DEFESA:
         status = tela_aviso_defesa(window)
+        rodadas += 1
+    if status == GAME_OVER:
+        status = game_over(window)
+        rodadas = 0
 
 pygame.quit()  
 
