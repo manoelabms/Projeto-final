@@ -37,6 +37,8 @@ def tela_game(window, time_casa, time_rival):
         hits = pygame.sprite.spritecollide(bola, all_goleiros, False, pygame.sprite.collide_mask)
         if bola.profundidade == 0 and len(hits) > 0:
             print('pegou')
+            placar_fora += 1
+
         elif bola.profundidade == 0:
             if pos_x > 265 and pos_x < 685 and pos_y > 260 and pos_y < 440:
                 print('gol')
