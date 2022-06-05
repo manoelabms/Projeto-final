@@ -34,16 +34,13 @@ class Bola(pygame.sprite.Sprite):
         if self.chutou and self.profundidade > 0:
             self.rect.centerx += int(self.d_x)
             self.rect.centery += int(self.d_y)
-
             center = self.rect.center
-            # TODO: rescalar a imagem
             self.w -= self.d_b
             self.h -= self.d_b
             self.image = pygame.transform.scale(self.image_original, (self.w, self.h))
             self.rect = self.image.get_rect()
             self.rect.center = center
             self.profundidade -= 1
-            #print(self.d_x, self.d_y, self.d_b, self.w, self.h, self.profundidade)
         
     def shoot(self, tx, ty, p = PROFUNDIDADE):
         print(tx, ty)
@@ -64,8 +61,6 @@ class Bola_gk(pygame.sprite.Sprite):
         self.image_original = img
         self.image = img
         self.rect = self.image.get_rect()
-        self.ini_x = x
-        self.ini_y = y
         self.rect.center = (x, y)
         self.profundidade = 1
         self.chutou = False
@@ -81,9 +76,7 @@ class Bola_gk(pygame.sprite.Sprite):
         if self.chutou and self.profundidade > 0:
             self.rect.centerx += int(self.d_x)
             self.rect.centery += int(self.d_y)
-
             center = self.rect.center
-            # TODO: rescalar a imagem
             self.w -= self.d_b
             self.h -= self.d_b
             self.image = pygame.transform.scale(self.image_original, (self.w, self.h))
@@ -91,17 +84,20 @@ class Bola_gk(pygame.sprite.Sprite):
             self.rect.center = center
             self.profundidade -= 1
         
-    def shoot(self, tx, ty):
-        print(tx, ty)
+    def shoot(self, tx, ty, p = PROFUNDIDADE):
         if not self.chutou:
+            self.profundidade = p
+            self.tx = tx
+            self.ty = ty
             aleatorio = random.randint(1, 5)
             if aleatorio != 2:
                 tx = random.randint(250, 695)
                 ty = random.randint(260, 440)
-            self.d_x = (tx - self.ini_x) // 100
-            self.d_y = (ty - self.ini_y) // 100
-            self.ty = ty
-            self.tx = tx 
+            self.d_x = (tx - self.rect.centerx) / self.profundidade
+            self.d_y = (ty - self.rect.centery) / self.profundidade
+            self.d_b = (self.rect.width - 50) / self.profundidade
+            self.w = self.image.get_rect().width
+            self.h = self.image.get_rect().height
             self.chutou = True
 
 class Goleiro(pygame.sprite.Sprite):

@@ -22,9 +22,13 @@ def tela_game_gk(window, time_casa, time_rival):
             if event.type == pygame.QUIT:
                 status = QUIT
             if event.type == pygame.MOUSEBUTTONDOWN:
+                pygame.time.set_timer(pygame.USEREVENT+1, 10000)
                 pos_x, pos_y = pygame.mouse.get_pos()
                 bola.shoot(pos_x, pos_y)
                 goleiro.defense(pos_x, pos_y)
+            if event.type == pygame.USEREVENT+1: 
+                pygame.time.set_timer(pygame.USEREVENT+1, 0) 
+                status = AVISO_CHUTE
 
         all_sprites.update()
 
