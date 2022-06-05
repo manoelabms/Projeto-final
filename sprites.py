@@ -2,17 +2,6 @@ import pygame
 from config import *
 import random
 
-
-class Chuteira(pygame.sprite.Sprite):
-    def __init__(self, img, x, y):
-        pygame.sprite.Sprite.__init__(self)
-        self.image = img
-        self.rect = self.image.get_rect()
-        self.rect.centerx = x
-        self.rect.bottom = y
-        self.speedx = 1.5
-    
-
 class Bola(pygame.sprite.Sprite):
     def __init__(self, img, x, y):
         pygame.sprite.Sprite.__init__(self)
@@ -160,8 +149,6 @@ class Goleiro_gk(pygame.sprite.Sprite):
         self.w = self.image.get_rect().width
         self.h = self.image.get_rect().height
       
-        
-
     def update(self):
         if self.defesa and self.profundidade > 0:
             self.rect.centerx += int(self.d_x)
