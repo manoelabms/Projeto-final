@@ -14,25 +14,24 @@ window = pygame.display.set_mode((WIDTH, HEIGHT))
 
 time_casa = ''
 time_rival = ''
-status = INICIAL
 rodadas = 0
+status = INICIAL
 while status != QUIT:
     if status == INICIAL:
         status = tela_inicial(window)
     if status == TIMES:
         status, time_casa, time_rival = tela_times(window)
     if status == GAME:
-        status = tela_game(window, time_casa, time_rival)
+        status, rodadas = tela_game(window, time_casa, time_rival, rodadas)
     if status == GAME_GK:
-        status = tela_game_gk(window, time_casa, time_rival) 
+        status, rodadas = tela_game_gk(window, time_casa, time_rival, rodadas) 
     if status == AVISO_CHUTE:
         status = tela_aviso_chute(window)
     if status == AVISO_DEFESA:
         status = tela_aviso_defesa(window)
-        rodadas += 1
     if status == GAME_OVER:
         status = game_over(window)
-        rodadas = 0
+
 
 pygame.quit()  
 

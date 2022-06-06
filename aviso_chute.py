@@ -13,10 +13,11 @@ def tela_aviso_chute(window):
             # ----- Verifica consequências
             if event.type == pygame.QUIT:
                 status = QUIT
-            # ----- Verifica consequências
             if event.type == pygame.MOUSEBUTTONDOWN:
+                #if rodadas == 5:
+                    #status = GAME_OVER
                 status = GAME
-
+            
         # ----- Gera saídas
         window.fill((0, 0, 0))  # Preenche com a cor branca
         window.blit(assets[TELA_AVISO_CHUTE], (0, 0))

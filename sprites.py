@@ -16,13 +16,17 @@ class Bola(pygame.sprite.Sprite):
         self.tx = 0
         self.ty = 0
         self.d_b = 0
+        self.px = self.rect.centerx
+        self.py = self.rect.centery
         self.w = self.image.get_rect().width
         self.h = self.image.get_rect().height
       
     def update(self):
         if self.chutou and self.profundidade > 0:
-            self.rect.centerx += int(self.d_x)
-            self.rect.centery += int(self.d_y)
+            self.px += self.d_x
+            self.py += self.d_y
+            self.rect.centerx = self.px
+            self.rect.centery = self.py
             center = self.rect.center
             self.w -= self.d_b
             self.h -= self.d_b
@@ -42,6 +46,8 @@ class Bola(pygame.sprite.Sprite):
             self.d_b = (self.rect.width - 50) / self.profundidade
             self.w = self.image.get_rect().width
             self.h = self.image.get_rect().height
+            self.px = self.rect.centerx
+            self.py = self.rect.centery
             self.chutou = True
 
 class Bola_gk(pygame.sprite.Sprite):
@@ -58,13 +64,18 @@ class Bola_gk(pygame.sprite.Sprite):
         self.tx = 0
         self.ty = 0
         self.d_b = 0
+        self.px = self.rect.centerx
+        self.py = self.rect.centery
+
         self.w = self.image.get_rect().width
         self.h = self.image.get_rect().height
 
     def update(self):
         if self.chutou and self.profundidade > 0:
-            self.rect.centerx += int(self.d_x)
-            self.rect.centery += int(self.d_y)
+            self.px += self.d_x
+            self.py += self.d_y
+            self.rect.centerx = self.px
+            self.rect.centery = self.py
             center = self.rect.center
             self.w -= self.d_b
             self.h -= self.d_b
@@ -87,6 +98,8 @@ class Bola_gk(pygame.sprite.Sprite):
             self.d_b = (self.rect.width - 50) / self.profundidade
             self.w = self.image.get_rect().width
             self.h = self.image.get_rect().height
+            self.px = self.rect.centerx
+            self.py = self.rect.centery
             self.chutou = True
 
 class Goleiro(pygame.sprite.Sprite):
@@ -105,7 +118,6 @@ class Goleiro(pygame.sprite.Sprite):
         self.defesa = False
         self.ty = 0
         self.tx = 0
-        self.hitbox = (self.rect.centerx, self.rect.bottom, 140, 160)
 
     def update(self):
         if self.defesa and self.ty < self.rect.bottom:
@@ -148,11 +160,15 @@ class Goleiro_gk(pygame.sprite.Sprite):
         self.d_b = 0
         self.w = self.image.get_rect().width
         self.h = self.image.get_rect().height
+        self.px = self.rect.centerx
+        self.py = self.rect.centery
       
     def update(self):
         if self.defesa and self.profundidade > 0:
-            self.rect.centerx += int(self.d_x)
-            self.rect.centery += int(self.d_y)
+            self.px += self.d_x
+            self.py += self.d_y
+            self.rect.centerx = self.px
+            self.rect.centery = self.py
             self.profundidade -= 1
 
     def defense (self, tx, ty, p = PROFUNDIDADE):
@@ -163,4 +179,6 @@ class Goleiro_gk(pygame.sprite.Sprite):
             self.d_x = (tx - self.rect.centerx) / self.profundidade
             self.d_y = (ty - self.rect.centery) / self.profundidade
             self.d_b = (self.rect.width - 50) / self.profundidade
+            self.px = self.rect.centerx
+            self.py = self.rect.centery
             self.defesa = True

@@ -5,7 +5,7 @@ from assets import *
 from sprites import *
 from times import *
 
-def tela_game_gk(window, time_casa, time_rival):
+def tela_game_gk(window, time_casa, time_rival, rodadas):
     clock = pygame.time.Clock()
     assets = load_assets()
     bola = Bola_gk(assets[BOLA_IMAGE], 480, 620)
@@ -22,13 +22,19 @@ def tela_game_gk(window, time_casa, time_rival):
             if event.type == pygame.QUIT:
                 status = QUIT
             if event.type == pygame.MOUSEBUTTONDOWN:
-                pygame.time.set_timer(pygame.USEREVENT+1, 10000)
+                pygame.time.set_timer(pygame.USEREVENT+1, 7000)
                 pos_x, pos_y = pygame.mouse.get_pos()
                 bola.shoot(pos_x, pos_y)
                 goleiro.defense(pos_x, pos_y)
+                rodadas +=1 
             if event.type == pygame.USEREVENT+1: 
-                pygame.time.set_timer(pygame.USEREVENT+1, 0) 
-                status = AVISO_CHUTE
+                pygame.time.set_timer(pygame.USEREVENT+1, 0)
+                if rodadas < 5: 
+                    status = AVISO_CHUTE
+                else:
+                    status = GAME_OVER
+                
+
 
         all_sprites.update()
 
@@ -59,4 +65,4 @@ def tela_game_gk(window, time_casa, time_rival):
         # ----- Atualiza estado do jogo
         pygame.display.update()  # Mostra o novo frame para o jogador
 
-    return status
+    return status, rodadas
