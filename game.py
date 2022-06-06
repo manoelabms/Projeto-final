@@ -6,7 +6,7 @@ from sprites import *
 from times import *
 import time
 
-def tela_game(window, time_casa, time_rival, rodadas):
+def tela_game(window, time_casa, time_rival, rodadas, placar_casa, placar_visitante):
     clock = pygame.time.Clock()
     assets = load_assets()
     bola = Bola(assets[BOLA_IMAGE], 480, 620)
@@ -37,16 +37,13 @@ def tela_game(window, time_casa, time_rival, rodadas):
         hits = pygame.sprite.spritecollide(bola, all_goleiros, False, pygame.sprite.collide_mask)
         if bola.profundidade == 0 and len(hits) > 0:
             print('pegou')
-            #all_goleiros.sprites()[0].rect.x = 480
-            #all_goleiros.sprites()[0].rect.y = 452
-            #placar_fora += 1
+            placar_visitante += 1
 
         elif bola.profundidade == 0:
             if pos_x > 265 and pos_x < 685 and pos_y > 260 and pos_y < 440:
                 print('gol')
-                #all_goleiros.sprites()[0].rect.x = 480
-                #all_goleiros.sprites()[0].rect.y = 452
-            #[(265,260),(685,260),(695,440),(250,440)])
+                placar_casa += 1
+               
         else:
             print('n gol')
             #all_goleiros.sprites()[0].rect.x = 480
@@ -82,4 +79,4 @@ def tela_game(window, time_casa, time_rival, rodadas):
         # ----- Atualiza estado do jogo
         pygame.display.update()  # Mostra o novo frame para o jogador
 
-    return status, rodadas
+    return status, rodadas, placar_casa, placar_visitante

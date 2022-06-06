@@ -20,7 +20,5 @@ AVISO_DEFESA = 5
 GAME_OVER = 7
 
 PROFUNDIDADE = 90
-placar_casa = 0
-placar_fora = 0
 
 

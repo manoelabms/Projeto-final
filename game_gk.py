@@ -5,11 +5,13 @@ from assets import *
 from sprites import *
 from times import *
 
-def tela_game_gk(window, time_casa, time_rival, rodadas):
+def tela_game_gk(window, time_casa, time_rival, rodadas, placar_casa, placar_visitante):
     clock = pygame.time.Clock()
     assets = load_assets()
     bola = Bola_gk(assets[BOLA_IMAGE], 480, 620)
     goleiro = Goleiro_gk(assets[GOLEIRO_IMAGE], 480, 370)
+    all_goleiros = pygame.sprite.Group()
+    all_goleiros.add(goleiro)
     all_sprites = pygame.sprite.Group()
     all_sprites.add(goleiro)
     all_sprites.add(bola)
@@ -34,10 +36,19 @@ def tela_game_gk(window, time_casa, time_rival, rodadas):
                 else:
                     status = GAME_OVER
                 
-
-
         all_sprites.update()
+        hits = pygame.sprite.spritecollide(bola, all_goleiros, False, pygame.sprite.collide_mask)
+        if bola.profundidade == 0 and len(hits) > 0:
+            print('pegou')
+            placar_visitante += 1
 
+        elif bola.profundidade == 0:
+            if pos_x > 265 and pos_x < 685 and pos_y > 260 and pos_y < 440:
+                print('gol')
+                placar_casa += 1
+               
+        else:
+            print('n gol')
         # ----- Gera saidas
         window.fill((255, 255, 255))  # Preenche com a cor branca
         window.blit(assets[GAME_BACKGROUND], (0, 0))
@@ -65,4 +76,4 @@ def tela_game_gk(window, time_casa, time_rival, rodadas):
         # ----- Atualiza estado do jogo
         pygame.display.update()  # Mostra o novo frame para o jogador
 
-    return status, rodadas
+    return status, rodadas, placar_casa, placar_visitante
