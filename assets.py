@@ -37,16 +37,16 @@ def load_assets():
     a[TEXTO] = a[TEXTO].render('Selecione um país para jogar', True, (255, 0, 0))
 
     a[BAYERN_IMAGE] = pygame.image.load('bayern-munchen.png').convert_alpha()
-    a[BAYERN_IMAGE] = pygame.transform.scale(a[BAYERN_IMAGE], (50, 50))
+    a[BAYERN_IMAGE] = pygame.transform.scale(a[BAYERN_IMAGE], (60, 60))
 
     a[PSG_IMAGE] = pygame.image.load('paris-saint-germain.png').convert_alpha()
-    a[PSG_IMAGE] = pygame.transform.scale(a[PSG_IMAGE], (50, 50))
+    a[PSG_IMAGE] = pygame.transform.scale(a[PSG_IMAGE], (60, 60))
 
     a[MANCHESTER_IMAGE] = pygame.image.load('manchester-united.png').convert_alpha()
-    a[MANCHESTER_IMAGE] = pygame.transform.scale(a[MANCHESTER_IMAGE], (50, 50))
+    a[MANCHESTER_IMAGE] = pygame.transform.scale(a[MANCHESTER_IMAGE], (60, 60))
 
     a[REALMADRID_IMAGE] = pygame.image.load('real-madrid.png').convert_alpha()
-    a[REALMADRID_IMAGE] = pygame.transform.scale(a[REALMADRID_IMAGE], (50, 50))
+    a[REALMADRID_IMAGE] = pygame.transform.scale(a[REALMADRID_IMAGE], (60, 60))
 
     a[TELA_AVISO_CHUTE] = pygame.image.load('Imagem_chutar_aviso.png').convert_alpha()
     a[TELA_AVISO_CHUTE] = pygame.transform.scale(a[TELA_AVISO_CHUTE], (960, 720))
