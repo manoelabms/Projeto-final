@@ -40,40 +40,44 @@ def tela_game_gk(window, time_casa, time_rival, rodadas, placar_casa, placar_vis
         hits = pygame.sprite.spritecollide(bola, all_goleiros, False, pygame.sprite.collide_mask)
         if bola.profundidade == 0 and len(hits) > 0:
             print('pegou')
-            placar_visitante += 1
+
 
         elif bola.profundidade == 0:
             if pos_x > 265 and pos_x < 685 and pos_y > 260 and pos_y < 440:
                 print('gol')
-                placar_casa += 1
+                placar_visitante += 1
                
         else:
             print('n gol')
         # ----- Gera saidas
         window.fill((255, 255, 255))  # Preenche com a cor branca
         window.blit(assets[GAME_BACKGROUND], (0, 0))
-        if time_casa == 'brasil':
-            window.blit(assets[BRASIL_IMAGE], (40, 40))
-        elif time_casa == 'franca':
-            window.blit(assets[FRANCA_IMAGE], (40, 40)) 
-        elif time_casa == 'alemanha':
-            window.blit(assets[ALEMANHA_IMAGE], (40, 40)) 
-        elif time_casa == 'argentina':
-            window.blit(assets[ARGENTINA_IMAGE], (40, 40)) 
+        if time_casa == 'Paris Saint Germain':
+            window.blit(assets[PSG_IMAGE], (40, 40))
+        elif time_casa == 'Manchester United':
+            window.blit(assets[MANCHESTER_IMAGE], (40, 40)) 
+        elif time_casa == 'Real Madrid':
+            window.blit(assets[REALMADRID_IMAGE], (40, 40)) 
+        elif time_casa == 'Bayern Munchen':
+            window.blit(assets[BAYERN_IMAGE], (40, 40)) 
 
-        if time_rival == 'brasil':
-            window.blit(assets[BRASIL_IMAGE], (900, 40))
-        elif time_rival == 'franca':
-            window.blit(assets[FRANCA_IMAGE], (900, 40)) 
-        elif time_rival == 'alemanha':
-            window.blit(assets[ALEMANHA_IMAGE], (900, 40)) 
-        elif time_rival == 'argentina':
-            window.blit(assets[ARGENTINA_IMAGE], (900, 40)) 
+        if time_rival == 'Paris Saint Germain':
+            window.blit(assets[PSG_IMAGE], (870, 40))
+        elif time_rival == 'Manchester United':
+            window.blit(assets[MANCHESTER_IMAGE], (870, 40)) 
+        elif time_rival == 'Real Madrid':
+            window.blit(assets[REALMADRID_IMAGE], (870, 40)) 
+        elif time_rival == 'Bayern Munchen':
+            window.blit(assets[BAYERN_IMAGE], (870, 40)) 
 
         all_sprites.draw(window)
         cor = (255, 0, 0)
-        # pygame.draw.polygon(window, cor, [(265,260),(685,260),(695,440),(250,440)])
-        # ----- Atualiza estado do jogo
+        font = pygame.font.SysFont(None, 48)
+        score = font.render('{0} {1} x {2} {3}'.format(time_casa, placar_casa, placar_visitante, time_rival), True, (255, 255, 255))
+        score_rect = score.get_rect()
+        score_rect.midtop = (WIDTH / 2,  10)
+        window.blit(score, score_rect)
+    
         pygame.display.update()  # Mostra o novo frame para o jogador
 
     return status, rodadas, placar_casa, placar_visitante
