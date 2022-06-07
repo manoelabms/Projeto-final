@@ -31,7 +31,7 @@ def tela_game_gk(window, time_casa, time_rival, rodadas, placar_casa, placar_vis
                 rodadas +=1 
             if event.type == pygame.USEREVENT+1: 
                 pygame.time.set_timer(pygame.USEREVENT+1, 0)
-                if rodadas < 5: 
+                if rodadas < 6: 
                     status = AVISO_CHUTE
                 else:
                     status = GAME_OVER
@@ -52,22 +52,22 @@ def tela_game_gk(window, time_casa, time_rival, rodadas, placar_casa, placar_vis
         # ----- Gera saidas
         window.fill((255, 255, 255))  # Preenche com a cor branca
         window.blit(assets[GAME_BACKGROUND], (0, 0))
-        if time_casa == 'Paris Saint Germain':
+        if time_casa == 'PSG':
             window.blit(assets[PSG_IMAGE], (80, 20))
-        elif time_casa == 'Manchester United':
+        elif time_casa == 'MAN':
             window.blit(assets[MANCHESTER_IMAGE], (80, 20)) 
-        elif time_casa == 'Real Madrid':
+        elif time_casa == 'RMA':
             window.blit(assets[REALMADRID_IMAGE], (80, 20)) 
-        elif time_casa == 'Bayern Munchen':
+        elif time_casa == 'FCB':
             window.blit(assets[BAYERN_IMAGE], (80, 20)) 
 
-        if time_rival == 'Paris Saint Germain':
+        if time_rival == 'PSG':
             window.blit(assets[PSG_IMAGE], (830, 20))
-        elif time_rival == 'Manchester United':
+        elif time_rival == 'MAN':
             window.blit(assets[MANCHESTER_IMAGE], (830, 20)) 
-        elif time_rival == 'Real Madrid':
+        elif time_rival == 'RMA':
             window.blit(assets[REALMADRID_IMAGE], (830, 20)) 
-        elif time_rival == 'Bayern Munchen':
+        elif time_rival == 'FCB':
             window.blit(assets[BAYERN_IMAGE], (830, 20)) 
 
         all_sprites.draw(window)
@@ -75,8 +75,13 @@ def tela_game_gk(window, time_casa, time_rival, rodadas, placar_casa, placar_vis
         font = pygame.font.SysFont(None, 48)
         score = font.render('{0} {1} x {2} {3}'.format(time_casa, placar_casa, placar_visitante, time_rival), True, (255, 255, 255))
         score_rect = score.get_rect()
-        score_rect.midtop = (WIDTH / 2,  20)
+        score_rect.midtop = (WIDTH / 2,  50)
         window.blit(score, score_rect)
+        round = font.render('Rodada {0}'.format(rodadas), True, (255, 255, 255))
+        round_rect = round.get_rect()
+        round_rect.midtop = (WIDTH / 2,  10)
+        window.blit(round, round_rect)
+
     
         pygame.display.update()  # Mostra o novo frame para o jogador
 

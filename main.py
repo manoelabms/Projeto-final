@@ -14,7 +14,7 @@ window = pygame.display.set_mode((WIDTH, HEIGHT))
 
 time_casa = ''
 time_rival = ''
-rodadas = 0
+rodadas = 1
 placar_casa = 0
 placar_visitante = 0
 

@@ -21,13 +21,13 @@ def tela_times(window):
             if event.type == pygame.MOUSEBUTTONDOWN:        
                     pos_x, pos_y = pygame.mouse.get_pos()
                     if pos_x > 540 and pos_x < 790 and pos_y > 410 and pos_y < 670:
-                        time_casa = 'Real Madrid'
+                        time_casa = 'RMA'
                     elif pos_x > 190 and pos_x < 440 and pos_y > 410 and pos_y < 670:
-                        time_casa = 'Manchester United'
+                        time_casa = 'MAN'
                     elif pos_x > 190 and pos_x < 410 and pos_y > 160 and pos_y < 390:
-                        time_casa = 'Bayern Munchen'
+                        time_casa = 'FCB'
                     elif pos_x > 540 and pos_x < 760 and pos_y > 120 and pos_y < 370:
-                        time_casa = 'Paris Saint-Germain'
+                        time_casa = 'PSG'
 
                     time_rival = random.choice(lista_times)
                     while time_rival == time_casa:

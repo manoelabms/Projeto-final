@@ -8,7 +8,7 @@ CHUTEIRA_WIDTH = 70
 CHUTEIRA_HEIGHT = 70
 
 FPS = 30
-lista_times = ['Paris Saint Germain', 'Real Madrid', 'Manchester United', 'Bayern Munchen']
+lista_times = ['PSG', 'RMA', 'MAN', 'FCB']
 # ===== Loop principal =====
 INICIAL = 1
 QUIT = 0
