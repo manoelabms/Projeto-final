@@ -18,6 +18,7 @@ def tela_game_gk(window, time_casa, time_rival, rodadas, placar_casa, placar_vis
     all_sprites.add(goleiro)
     all_sprites.add(bola)
     status = GAME_GK
+    defendeu = False
     while status == GAME_GK:
         clock.tick(FPS)
 
@@ -25,14 +26,16 @@ def tela_game_gk(window, time_casa, time_rival, rodadas, placar_casa, placar_vis
             # ----- Verifica consequências
             if event.type == pygame.QUIT:
                 status = QUIT
-            if event.type == pygame.MOUSEBUTTONDOWN:
+            if event.type == pygame.MOUSEBUTTONDOWN and not defendeu:
                 pygame.time.set_timer(pygame.USEREVENT+1, 7000)
                 pos_x, pos_y = pygame.mouse.get_pos()
                 bola.shoot(pos_x, pos_y)
                 goleiro.defense(pos_x, pos_y)
+                defendeu = True
                 #rodadas +=1 
             if event.type == pygame.USEREVENT+1: 
                 pygame.time.set_timer(pygame.USEREVENT+1, 0)
+                defendeu = False
                 rodadas +=1
                 if rodadas <= 5: 
                     status = AVISO_CHUTE

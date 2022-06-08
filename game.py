@@ -19,21 +19,23 @@ def tela_game(window, time_casa, time_rival, rodadas, placar_casa, placar_visita
     all_sprites.add(goleiro)
     all_sprites.add(bola)
     status = GAME
-
+    chutou = False
     while status == GAME:
         clock.tick(FPS)
         for event in pygame.event.get():
             # ----- Verifica consequências
             if event.type == pygame.QUIT:
                 status = QUIT
-            if event.type == pygame.MOUSEBUTTONDOWN:
+            if event.type == pygame.MOUSEBUTTONDOWN and not chutou :
                 pygame.time.set_timer(pygame.USEREVENT+1, 7000)
                 pos_x, pos_y = pygame.mouse.get_pos()
                 bola.shoot(pos_x, pos_y)
-                goleiro.defense(pos_x, pos_y)
+                goleiro.defense(pos_x, pos_y)   
+                chutou = True 
             if event.type == pygame.USEREVENT+1: 
                 pygame.time.set_timer(pygame.USEREVENT+1, 0) 
                 status = AVISO_DEFESA
+                chutou = False
         all_sprites.update()
         
 
