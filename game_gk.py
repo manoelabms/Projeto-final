@@ -30,9 +30,10 @@ def tela_game_gk(window, time_casa, time_rival, rodadas, placar_casa, placar_vis
                 pos_x, pos_y = pygame.mouse.get_pos()
                 bola.shoot(pos_x, pos_y)
                 goleiro.defense(pos_x, pos_y)
-                rodadas +=1 
+                #rodadas +=1 
             if event.type == pygame.USEREVENT+1: 
                 pygame.time.set_timer(pygame.USEREVENT+1, 0)
+                rodadas +=1
                 if rodadas <= 5: 
                     status = AVISO_CHUTE
                 else:
@@ -75,8 +76,8 @@ def tela_game_gk(window, time_casa, time_rival, rodadas, placar_casa, placar_vis
                 bola = Bola(assets[BOLA_IMAGE], 480, 620)
                 all_bolas.add(bola)
                 all_sprites.add(bola)
-        
-        all_sprites.update()
+
+        #all_sprites.update()
         # ----- Gera saidas
         window.fill((255, 255, 255))  # Preenche com a cor branca
         window.blit(assets[GAME_BACKGROUND], (0, 0))

@@ -77,7 +77,7 @@ def tela_game(window, time_casa, time_rival, rodadas, placar_casa, placar_visita
             #all_goleiros.sprites()[0].rect.x = 480
             #all_goleiros.sprites()[0].rect.y = 452
         # ----- Gera saidas
-        all_sprites.update()
+        #all_sprites.update()
         window.fill((255, 255, 255))  # Preenche com a cor branca
         window.blit(assets[GAME_BACKGROUND], (0, 0))
 
