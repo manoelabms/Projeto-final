@@ -6,6 +6,8 @@ from sprites import *
 from times import *
 
 def tela_game_gk(window, time_casa, time_rival, rodadas, placar_casa, placar_visitante):
+    pygame.mixer.music.load('som_torcida (2).mp3')
+    pygame.mixer.music.play()
     clock = pygame.time.Clock()
     assets = load_assets()
     bola = Bola_gk(assets[BOLA_IMAGE], 480, 620)
@@ -19,6 +21,7 @@ def tela_game_gk(window, time_casa, time_rival, rodadas, placar_casa, placar_vis
     all_sprites.add(bola)
     status = GAME_GK
     defendeu = False
+    pygame.mixer.Sound.play(assets['apito'])
     while status == GAME_GK:
         clock.tick(FPS)
 
