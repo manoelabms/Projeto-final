@@ -13,6 +13,8 @@ def tela_game_gk(window, time_casa, time_rival, rodadas, placar_casa, placar_vis
     all_goleiros = pygame.sprite.Group()
     all_goleiros.add(goleiro)
     all_sprites = pygame.sprite.Group()
+    all_bolas = pygame.sprite.Group()
+    all_bolas.add(bola)
     all_sprites.add(goleiro)
     all_sprites.add(bola)
     status = GAME_GK
@@ -37,16 +39,44 @@ def tela_game_gk(window, time_casa, time_rival, rodadas, placar_casa, placar_vis
                     status = GAME_OVER
                 
         all_sprites.update()
-        hits = pygame.sprite.spritecollide(bola, all_goleiros, False, pygame.sprite.collide_mask)
+        hits = pygame.sprite.groupcollide(all_bolas, all_goleiros, False, False, None)
         if bola.profundidade == 0 and len(hits) > 0:
-            print('pegou')
-
+            for bola in hits:
+                bola.kill()
+                goleiro.kill()
+                goleiro = Goleiro(assets[GOLEIRO_IMAGE], 480, 452)
+                all_goleiros.add(goleiro)
+                all_sprites.add(goleiro)
+                bola = Bola(assets[BOLA_IMAGE], 480, 620)
+                all_bolas.add(bola)
+                all_sprites.add(bola)
+                
 
         elif bola.profundidade == 0:
             if pos_x > 265 and pos_x < 685 and pos_y > 260 and pos_y < 440:
                 placar_visitante += 1
-               
+                
+                bola.kill()
+                goleiro.kill()
+                goleiro = Goleiro(assets[GOLEIRO_IMAGE], 480, 452)
+                all_goleiros.add(goleiro)
+                all_sprites.add(goleiro)
+                bola = Bola(assets[BOLA_IMAGE], 480, 620)
+                all_bolas.add(bola)
+                all_sprites.add(bola)
 
+
+            else:
+                bola.kill()
+                goleiro.kill()
+                goleiro = Goleiro(assets[GOLEIRO_IMAGE], 480, 452)
+                all_goleiros.add(goleiro)
+                all_sprites.add(goleiro)
+                bola = Bola(assets[BOLA_IMAGE], 480, 620)
+                all_bolas.add(bola)
+                all_sprites.add(bola)
+        
+        all_sprites.update()
         # ----- Gera saidas
         window.fill((255, 255, 255))  # Preenche com a cor branca
         window.blit(assets[GAME_BACKGROUND], (0, 0))
