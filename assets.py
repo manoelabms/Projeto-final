@@ -58,8 +58,8 @@ def load_assets():
     a[FIM_BACKGROUND] = pygame.transform.scale(a[FIM_BACKGROUND], (960, 720))
     
 
-    a[CHAMPIONS_MUSICA] = pygame.mixer.music.load('hino_champions.mp3')
-    a[CHAMPIONS_MUSICA] = pygame.mixer.music.set_volume(0.4)
+    #a[CHAMPIONS_MUSICA] = pygame.mixer.music.load('hino_champions.mp3')
+    #a[CHAMPIONS_MUSICA] = pygame.mixer.music.set_volume(0.4)
     #assets[] = pygame.mixer.Sound(os.path.join(SND_DIR, 'expl3.wav'))
     return a
 
