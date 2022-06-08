@@ -17,6 +17,7 @@ TELA_AVISO_CHUTE = 'avisochute.image'
 TELA_AVISO_DEFESA = 'avisodefesa.image'
 FIM_BACKGROUND = 'telafinal.background'
 CHAMPIONS_MUSICA = 'champions.mp3'
+SOM_TORCIDA = 'somtorcida.mp3'
 
 def load_assets():
     a = {}
@@ -56,11 +57,10 @@ def load_assets():
 
     a[FIM_BACKGROUND] = pygame.image.load('Imagem_final_de_jogo.png').convert_alpha()
     a[FIM_BACKGROUND] = pygame.transform.scale(a[FIM_BACKGROUND], (960, 720))
-    
 
-    a[CHAMPIONS_MUSICA] = pygame.mixer.music.load('hino_champions.mp3')
-    a[CHAMPIONS_MUSICA] = pygame.mixer.music.set_volume(0.4)
-    #assets[] = pygame.mixer.Sound(os.path.join(SND_DIR, 'expl3.wav'))
+    a['apito'] = pygame.mixer.Sound('apitodefutebol.mp3')
+    a['apito'].set_volume(0.8)
+    
     return a
 
 

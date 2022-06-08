@@ -9,6 +9,7 @@ def tela_times(window):
     status = TIMES
     time_casa = '' #inicializando um time
     time_rival = '' #inicializando um time rival
+    pygame.mixer.music.unpause()
 
     while status == TIMES:
         clock.tick(FPS)

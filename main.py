@@ -18,6 +18,11 @@ rodadas = 1
 placar_casa = 0
 placar_visitante = 0
 
+pygame.mixer.init()
+pygame.mixer.music.set_volume(0.8)
+
+
+
 status = INICIAL
 while status != QUIT:
     if status == INICIAL:

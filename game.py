@@ -7,6 +7,9 @@ from times import *
 import time
 
 def tela_game(window, time_casa, time_rival, rodadas, placar_casa, placar_visitante):
+    pygame.mixer.music.load('som_torcida (2).mp3')
+    pygame.mixer.Sound.play()
+    pygame.mixer.music.play()
     clock = pygame.time.Clock()
     assets = load_assets()
     bola = Bola(assets[BOLA_IMAGE], 480, 620)
@@ -20,6 +23,7 @@ def tela_game(window, time_casa, time_rival, rodadas, placar_casa, placar_visita
     all_sprites.add(bola)
     status = GAME
     chutou = False
+    assets['apito'].play(0, )
     while status == GAME:
         clock.tick(FPS)
         for event in pygame.event.get():
