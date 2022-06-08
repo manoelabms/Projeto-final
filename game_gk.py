@@ -31,7 +31,7 @@ def tela_game_gk(window, time_casa, time_rival, rodadas, placar_casa, placar_vis
                 rodadas +=1 
             if event.type == pygame.USEREVENT+1: 
                 pygame.time.set_timer(pygame.USEREVENT+1, 0)
-                if rodadas < 6: 
+                if rodadas <= 5: 
                     status = AVISO_CHUTE
                 else:
                     status = GAME_OVER
@@ -44,11 +44,9 @@ def tela_game_gk(window, time_casa, time_rival, rodadas, placar_casa, placar_vis
 
         elif bola.profundidade == 0:
             if pos_x > 265 and pos_x < 685 and pos_y > 260 and pos_y < 440:
-                print('gol')
                 placar_visitante += 1
                
-        else:
-            print('n gol')
+
         # ----- Gera saidas
         window.fill((255, 255, 255))  # Preenche com a cor branca
         window.blit(assets[GAME_BACKGROUND], (0, 0))

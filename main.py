@@ -33,7 +33,7 @@ while status != QUIT:
     if status == AVISO_DEFESA:
         status = tela_aviso_defesa(window)
     if status == GAME_OVER:
-        status = game_over(window)
+        status = game_over(window, time_casa, time_rival, placar_casa, placar_visitante, rodadas)
 
 
 pygame.quit()  
