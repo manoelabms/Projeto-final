@@ -30,7 +30,7 @@ def tela_game_gk(window, time_casa, time_rival, rodadas, placar_casa, placar_vis
             if event.type == pygame.QUIT:
                 status = QUIT
             if event.type == pygame.MOUSEBUTTONDOWN and not defendeu:
-                pygame.time.set_timer(pygame.USEREVENT+1, 7000)
+                pygame.time.set_timer(pygame.USEREVENT+1, 5000)
                 pos_x, pos_y = pygame.mouse.get_pos()
                 bola.shoot(pos_x, pos_y)
                 goleiro.defense(pos_x, pos_y)
