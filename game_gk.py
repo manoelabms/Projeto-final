@@ -40,7 +40,7 @@ def tela_game_gk(window, time_casa, time_rival, rodadas, placar_casa, placar_vis
                 pygame.time.set_timer(pygame.USEREVENT+1, 0)
                 defendeu = False
                 rodadas +=1
-                if rodadas <= 2: 
+                if rodadas <= 5: 
                     status = AVISO_CHUTE
                 else:
                     status = GAME_OVER
