@@ -35,12 +35,12 @@ def tela_game_gk(window, time_casa, time_rival, rodadas, placar_casa, placar_vis
                 bola.shoot(pos_x, pos_y)
                 goleiro.defense(pos_x, pos_y)
                 defendeu = True
-                #rodadas +=1 
+
             if event.type == pygame.USEREVENT+1: 
                 pygame.time.set_timer(pygame.USEREVENT+1, 0)
                 defendeu = False
                 rodadas +=1
-                if rodadas <= 5: 
+                if rodadas <= 2: 
                     status = AVISO_CHUTE
                 else:
                     status = GAME_OVER

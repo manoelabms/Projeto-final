@@ -26,7 +26,7 @@ pygame.mixer.music.set_volume(0.8)
 status = INICIAL
 while status != QUIT:
     if status == INICIAL:
-        status = tela_inicial(window)
+        status, placar_casa, placar_visitante = tela_inicial(window, placar_casa, placar_visitante)
     if status == TIMES:
         status, time_casa, time_rival = tela_times(window)
     if status == GAME:
@@ -38,7 +38,7 @@ while status != QUIT:
     if status == AVISO_DEFESA:
         status = tela_aviso_defesa(window)
     if status == GAME_OVER:
-        status = game_over(window, time_casa, time_rival, placar_casa, placar_visitante, rodadas)
+        status, time_casa, time_rival, placar_casa, placar_visitante, rodadas = game_over(window, time_casa, time_rival, placar_casa, placar_visitante, rodadas)
 
 
 pygame.quit()  

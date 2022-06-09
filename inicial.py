@@ -2,7 +2,7 @@ import pygame
 from config import *
 from assets import *
 
-def tela_inicial(window):
+def tela_inicial(window, placar_casa, placar_visitante):
     clock = pygame.time.Clock()
     assets = load_assets()
     status = INICIAL
@@ -17,6 +17,8 @@ def tela_inicial(window):
             # ----- Verifica consequências
             if event.type == pygame.MOUSEBUTTONDOWN:
                 status = TIMES
+                placar_casa = 0
+                placar_visitante = 0
 
         # ----- Gera saídas
         window.fill((0, 0, 0))  # Preenche com a cor branca
@@ -25,4 +27,4 @@ def tela_inicial(window):
         # ----- Atualiza estado do jogo
         pygame.display.update()  # Mostra o novo frame para o jogador
     pygame.mixer.music.pause()
-    return status
+    return status, placar_casa, placar_visitante

@@ -11,6 +11,8 @@ Ao final das rodadas, o computador irá mostrar o resultado da partida e você p
 
 Desenvolvido por Henrique Manequini e Manoela Busatto
 
+Tutorial: https://youtu.be/dRr_yjSjjtw
+
 Referências: 
 
 Jogo:

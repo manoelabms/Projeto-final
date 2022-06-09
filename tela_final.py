@@ -19,10 +19,7 @@ def game_over(window, time_casa, time_rival, placar_casa, placar_visitante, roda
             if event.type == pygame.MOUSEBUTTONDOWN:
                 status = INICIAL
                 rodadas = 0
-                time_casa = ''
-                time_rival = ''
-                placar_casa = 0
-                placar_visitante = 0
+
 
         # ----- Gera saídas
         window.fill((0, 0, 0))  # Preenche com a cor branca
@@ -32,7 +29,7 @@ def game_over(window, time_casa, time_rival, placar_casa, placar_visitante, roda
         score_rect = score.get_rect()
         score_rect.midtop = (WIDTH / 2,  410)
         window.blit(score, score_rect)
-        
+
 
         # ----- Atualiza estado do jogo
         pygame.display.update()  # Mostra o novo frame para o jogador
